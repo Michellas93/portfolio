@@ -1,0 +1,19 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  check:
+    name: Check Typescript and Vitest
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install packages
+        run: yarn install --immutable --immutable-cache --check-cache
+      - name: Check EsLint
+        run: yarn eslint
+      - name: Run TS Check
+        run: yarn typecheck
+      - name: Run tests
+        run: yarn test
