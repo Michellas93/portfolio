@@ -10,6 +10,7 @@ import { About } from "./pages/About.tsx";
 import { Maps } from "./pages/Maps.tsx";
 import { Login } from "./pages/Login.tsx";
 import { SignIn } from "./pages/SignIn.tsx";
+import "./tailwind.css";
 
 const router = createBrowserRouter([
 	{
