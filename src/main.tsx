@@ -2,14 +2,14 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import Root from "./pages/Root.tsx";
 import ErrorPage from "./pages/ErrorPage";
 import { ROUTES } from "./routes.ts";
-import { Contact } from "./pages/Contact.tsx";
-import { About } from "./pages/About.tsx";
+// import { Contact } from "./pages/Contact.tsx";
+import { Root } from "./pages/Root.tsx";
 import { Maps } from "./pages/Maps.tsx";
 import { Login } from "./pages/Login.tsx";
 import { SignIn } from "./pages/SignIn.tsx";
+import { Blog } from "./pages/Blog.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -19,16 +19,12 @@ const router = createBrowserRouter([
 
 		children: [
 			{
-				path: ROUTES.contacts(),
-				element: <Contact />,
-			},
-			{
-				path: ROUTES.about(),
-				element: <About />,
-			},
-			{
 				path: ROUTES.maps(),
 				element: <Maps />,
+			},
+			{
+				path: ROUTES.login(),
+				element: <Blog />,
 			},
 			{
 				path: ROUTES.login(),
