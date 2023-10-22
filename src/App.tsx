@@ -1,5 +1,4 @@
 import "./App.css";
-import { Header } from "./components/Header";
 import ToDoItem from "./components/ToDoItem";
 
 const TODOS = [
