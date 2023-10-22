@@ -1,3 +1,7 @@
-export const Header = () => {
-	return <h1>Pet Header</h1>;
+interface propsH {
+	header: string;
+}
+
+export const Header = ({ header }: propsH) => {
+	return <h1>{header}</h1>;
 };

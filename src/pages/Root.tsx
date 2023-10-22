@@ -25,39 +25,34 @@ export const Root = () => {
 
 				<div>
 					<nav className="bg-yellow-300 py-4">
-						<div className="flex justify-between">
-							<div className="ml-8">
-								<Logo />
-							</div>
-							<div>
-								<ul className="flex">
-									<li className="mx-4 hover:font-extrabold">
-										<Link to={ROUTES.index()}>Domů</Link>
-									</li>
+						<div className="flex justify-between pl-8 ">
+							<Logo />
 
-									<li className="mx-4 hover:font-extrabold">
-										<Link to={ROUTES.maps()}>Mapy</Link>
-									</li>
-									<li className="mx-4 hover:font-extrabold">
-										<Link to={ROUTES.blog()}>Blog</Link>
-									</li>
-								</ul>
-							</div>
+							<ul className="flex">
+								<li className="mx-4 hover:font-extrabold">
+									<Link to={ROUTES.index()}>Domů</Link>
+								</li>
 
-							<div>
-								<ul className="flex">
-									<li className=" px-6 pt-1 pb-1 text-pink-400 bg-white rounded-xl border-2 border-pink-400 hover:text-white hover:bg-pink-400 hover:border-white">
-										<Link to={ROUTES.login()}>login</Link>
-									</li>
-									<li className="mx-4 mr-8 px-4 pt-1 pb-1 text-white bg-pink-400 rounded-xl border-2 border-white hover:bg-white hover:text-pink-400 hover:border-pink-400 ">
-										<Link to={ROUTES.signin()}>Sign in</Link>
-									</li>
-								</ul>
-							</div>
+								<li className="mx-4 hover:font-extrabold">
+									<Link to={ROUTES.maps()}>Mapy</Link>
+								</li>
+								<li className="mx-4 hover:font-extrabold">
+									<Link to={ROUTES.blog()}>Blog</Link>
+								</li>
+							</ul>
+
+							<ul className="flex">
+								<li className=" px-6 pt-1 pb-1 text-pink-400 bg-white rounded-xl border-2 border-pink-400 hover:text-white hover:bg-pink-400 hover:border-white">
+									<Link to={ROUTES.login()}>login</Link>
+								</li>
+								<li className="mx-4 mr-8 px-4 pt-1 pb-1 text-white bg-pink-400 rounded-xl border-2 border-white hover:bg-white hover:text-pink-400 hover:border-pink-400 ">
+									<Link to={ROUTES.signin()}>Sign in</Link>
+								</li>
+							</ul>
 						</div>
 					</nav>
 				</div>
-				<Header />
+				<Header header="Pet Heart" />
 			</div>
 			<div id="detail">
 				<Outlet />
