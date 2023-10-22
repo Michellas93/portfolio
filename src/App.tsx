@@ -32,7 +32,6 @@ const TODOS = [
 function App() {
 	return (
 		<>
-			<Header />
 			{TODOS.map((item) => (
 				<ToDoItem
 					// {...item}
