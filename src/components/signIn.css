@@ -1,0 +1,7 @@
+.navbar__buttonR {
+	background-color: #ddbea9;
+}
+.navbar__buttonR:hover {
+	border: 2px solid #ddbea9;
+	color: #ddbea9;
+}

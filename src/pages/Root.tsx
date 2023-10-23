@@ -2,57 +2,43 @@ import { Outlet, Link } from "react-router-dom";
 import { ROUTES } from "../routes";
 import { Header } from "../components/Header";
 import { Logo } from "../components/Logo";
+import "./navbar.css";
 
 export const Root = () => {
 	return (
 		<>
 			<div id="sidebar">
-				{/* <form id="search-form" role="search">
-                    <input
-                        id="q"
-                        aria-label="Search contacts"
-                        placeholder="Search"
-                        type="search"
-                        name="q"
-                    />
+				<nav className="navbar py-2 rounded-xl mt-5 mx-2">
+					<div className="flex justify-between pl-8 ">
+						<Logo />
 
-                    <div id="search-spinner" aria-hidden hidden={true} />
-                    <div className="sr-only" aria-live="polite"></div>
-                </form> */}
-				{/* <form method="post">
-                    <button type="submit">New</button>
-                </form> */}
+						<ul className="flex">
+							<li className="px-4 pt-2 hover:font-extrabold text-white ">
+								<Link to={ROUTES.index()}>Domů</Link>
+							</li>
 
-				<div>
-					<nav className="bg-yellow-300 py-4">
-						<div className="flex justify-between pl-8 ">
-							<Logo />
+							<li className="px-4 pt-2 hover:font-extrabold text-white">
+								<Link to={ROUTES.maps()}>Mapy</Link>
+							</li>
+							<li className="px-4 pt-2 hover:font-extrabold text-white">
+								<Link to={ROUTES.blog()}>Blog</Link>
+							</li>
+						</ul>
 
-							<ul className="flex">
-								<li className="mx-4 hover:font-extrabold">
-									<Link to={ROUTES.index()}>Domů</Link>
-								</li>
-
-								<li className="mx-4 hover:font-extrabold">
-									<Link to={ROUTES.maps()}>Mapy</Link>
-								</li>
-								<li className="mx-4 hover:font-extrabold">
-									<Link to={ROUTES.blog()}>Blog</Link>
-								</li>
-							</ul>
-
-							<ul className="flex">
-								<li className=" px-6 pt-1 pb-1 text-pink-400 bg-white rounded-xl border-2 border-pink-400 hover:text-white hover:bg-pink-400 hover:border-white">
-									<Link to={ROUTES.login()}>login</Link>
-								</li>
-								<li className="mx-4 mr-8 px-4 pt-1 pb-1 text-white bg-pink-400 rounded-xl border-2 border-white hover:bg-white hover:text-pink-400 hover:border-pink-400 ">
-									<Link to={ROUTES.signin()}>Sign in</Link>
-								</li>
-							</ul>
-						</div>
-					</nav>
-				</div>
-				<Header header="Pet Heart" />
+						<ul className="flex">
+							<li className=" px-6 pt-1 pb-1 navbar__buttonL bg-white rounded-xl hover:text-white hover:border-2 hover:border-white">
+								<Link to={ROUTES.login()}>Log in</Link>
+							</li>
+							<li className=" navbar__buttonR mx-4 mr-8 px-4 pt-1 pb-1 text-white rounded-xl border-2 border-white hover:bg-white ">
+								<Link to={ROUTES.signin()}>Sign in</Link>
+							</li>
+						</ul>
+					</div>
+				</nav>
+				<Header
+					header="Pet Heart"
+					headerParagraph="s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has  "
+				/>
 			</div>
 			<div id="detail">
 				<Outlet />
