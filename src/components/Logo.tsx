@@ -1,7 +1,9 @@
+import logo from "../assets/logo.png";
+
 export const Logo = () => {
 	return (
 		<div className="w-16">
-			<img className="rounded-lg" src="../assets/logo.png" alt="logo" />
+			<img className="rounded-lg" src={logo} alt="logo" />
 		</div>
 	);
 };
