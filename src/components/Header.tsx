@@ -1,4 +1,3 @@
-import { ROUTES } from "../routes";
 import { Button } from "./Button";
 import pohyb from "../assets/animation-3993429_640.png";
 
@@ -6,7 +5,6 @@ import { ButtonLink } from "./ButtonLink";
 interface Props {
 	header: string;
 	headerParagraph: string;
-	style: string;
 }
 
 export const Header = ({ header, headerParagraph }: Props) => {

@@ -1,4 +1,3 @@
-import React from "react";
 interface BlogProps {
 	h3: string;
 	text: string;
