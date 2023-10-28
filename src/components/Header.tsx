@@ -1,30 +1,31 @@
-import "./header.css";
-import { Login } from "./Login";
-import { SignIn } from "./SignIn";
+import { ROUTES } from "../routes";
+import { Button } from "./Button";
+import pohyb from "../assets/animation-3993429_640.png";
 
-interface propsH {
+import { ButtonLink } from "./ButtonLink";
+interface Props {
 	header: string;
 	headerParagraph: string;
+	style: string;
 }
 
-export const Header = ({ header, headerParagraph }: propsH) => {
+export const Header = ({ header, headerParagraph }: Props) => {
 	return (
-		<div className="flex items-center ">
-			<div className="ml-10 ">
+		<div className="flex items-center ml-8 mr-8 ">
+			<div className="ml-10  ">
 				<h1 className="text-6xl mt-4 ">{header}</h1>
-				<p className="leading-9 mt-4 text-slate-600 ">{headerParagraph}</p>
-				<div className="flex mt-4">
-					<Login login="Login" />
-					<SignIn signin="Sign in" />
+				<p className="leading-8 mt-4 text-slate-600 ">{headerParagraph}</p>
+				<div className="flex mt-4 space-x-3">
+					<Button onClick={(event) => console.log("klik", event)}>
+						{" "}
+						Login
+					</Button>
+					<ButtonLink link="/abc" type="secondary">
+						Sign in
+					</ButtonLink>
 				</div>
 			</div>
-			<div>
-				<img
-					className="header__img mr-4  block"
-					src="../src/assets/dog.png"
-					alt="dog picture"
-				/>
-			</div>
+			<img className="w-1/3 pl-6" src={pohyb} />
 		</div>
 	);
 };
