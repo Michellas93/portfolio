@@ -8,11 +8,19 @@ type Props = Omit<ButtonProps, "onClick"> & {
 export const ButtonLink = ({ link, ...props }: Props) => {
 	const navigate = useNavigate();
 	return (
-		<Button
-			{...props}
-			onClick={() => {
-				navigate(link);
-			}}
-		/>
+		<div className="flex space-x-3">
+			<Button onClick={(event) => console.log("klik", event)} type="primary">
+				Login
+			</Button>
+			<Button onClick={(event) => console.log("klik", event)} type="secondary">
+				Sign in
+			</Button>
+		</div>
+		// {/* <Button
+		// 	{...props}
+		// 	onClick={() => {
+		// 		navigate(link);
+		// 	}}
+		// /> */}
 	);
 };

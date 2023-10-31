@@ -1,5 +1,5 @@
-import { Outlet, Link } from "react-router-dom";
-import { ROUTES } from "../routes";
+import { Outlet } from "react-router-dom";
+
 import { Header } from "../components/Header";
 import { Logo } from "../components/Logo";
 import { Button } from "../components/Button";
@@ -10,6 +10,8 @@ import { BlogCards } from "../components/BlogCards";
 import strava from "../assets/granule.jpg";
 import pohyb from "../assets/mapadog.jpg";
 import denik from "../assets/diar.jpg";
+import { ButtonLink } from "../components/ButtonLink";
+import Navbar from "../components/Navbar";
 
 export const Root = () => {
 	return (
@@ -18,34 +20,8 @@ export const Root = () => {
 				<nav className="navbar py-2 rounded-xl mt-5 mx-2 bg-darkGreen">
 					<div className="flex justify-between pl-4 pr-4 ">
 						<Logo />
-
-						<ul className="flex bg-darkGreen">
-							<li className="px-4 pt-2 hover:font-extrabold text-white ">
-								<Link to={ROUTES.index()}>Domů</Link>
-							</li>
-
-							<li className="px-4 pt-2 hover:font-extrabold  text-white">
-								<Link to={ROUTES.maps()}>Mapy</Link>
-							</li>
-							<li className="px-4 pt-2 hover:font-extrabold  text-white">
-								<Link to={ROUTES.blog()}>Blog</Link>
-							</li>
-						</ul>
-
-						<div className="flex space-x-3">
-							<Button
-								onClick={(event) => console.log("klik", event)}
-								type="primary"
-							>
-								Login
-							</Button>
-							<Button
-								onClick={(event) => console.log("klik", event)}
-								type="secondary"
-							>
-								Sign in
-							</Button>
-						</div>
+						<Navbar />
+						<ButtonLink link="" />
 					</div>
 				</nav>
 				<Header

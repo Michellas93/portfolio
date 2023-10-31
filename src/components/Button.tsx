@@ -20,8 +20,8 @@ export const Button = ({
 		<div>
 			<button
 				className={cs("px-6 pt-1 pb-1  rounded-xl border-2", {
-					"bg-darkGreen": isPrimary,
-					"bg-darkBrown": isSecondary,
+					"bg-darkGreen hover:bg-darkBrown": isPrimary,
+					"bg-darkBrown hover:bg-darkGreen": isSecondary,
 				})}
 				onClick={onClick}
 			>
