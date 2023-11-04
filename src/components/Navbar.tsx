@@ -25,15 +25,13 @@ const Navbar = () => {
 	];
 
 	return (
-		<div>
-			<ul className="flex bg-darkGreen">
-				{navbarItem.map((item) => (
-					<li className={item.className}>
-						<Link to={item.link}>{item.text}</Link>
-					</li>
-				))}
-			</ul>
-		</div>
+		<ul className="flex bg-darkGreen">
+			{navbarItem.map((item) => (
+				<li className={item.className}>
+					<Link to={item.link}>{item.text}</Link>
+				</li>
+			))}
+		</ul>
 	);
 };
 
