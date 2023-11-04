@@ -14,7 +14,10 @@ export const Header = ({ header, headerParagraph }: Props) => {
 				<p className="leading-8 mt-4 text-slate-600 ">{headerParagraph}</p>
 				<div className="flex mt-4 space-x-3">
 					<Button onClick={(event) => console.log("klik", event)}>Login</Button>
-					<Button link="/abc" type="secondary">
+					<Button
+						onClick={(event) => console.log("klik", event)}
+						type="secondary"
+					>
 						Sign in
 					</Button>
 				</div>
