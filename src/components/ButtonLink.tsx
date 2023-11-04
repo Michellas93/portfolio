@@ -16,11 +16,5 @@ export const ButtonLink = ({}: Props) => {
 				Sign in
 			</Button>
 		</div>
-		// {/* <Button
-		// 	{...props}
-		// 	onClick={() => {
-		// 		navigate(link);
-		// 	}}
-		// /> */}
 	);
 };
