@@ -1,9 +1,7 @@
 import { Outlet } from "react-router-dom";
-
 import { Header } from "../components/Header";
 import { Logo } from "../components/Logo";
 import { Button } from "../components/Button";
-import "./navbar.css";
 import { Title } from "../components/Title";
 import mapa from "../assets/mapa.jpg";
 import { BlogCards } from "../components/BlogCards";
@@ -12,6 +10,7 @@ import pohyb from "../assets/mapadog.jpg";
 import denik from "../assets/diar.jpg";
 import { ButtonLink } from "../components/ButtonLink";
 import Navbar from "../components/Navbar";
+import AboutMe from "../components/AboutMe";
 
 export const Root = () => {
 	return (
@@ -24,6 +23,7 @@ export const Root = () => {
 						<ButtonLink link="" />
 					</div>
 				</nav>
+
 				<Header
 					header="Pet Heart"
 					headerParagraph="s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has  "
@@ -48,7 +48,31 @@ export const Root = () => {
 						</Button>
 					</div>
 				</div>
-				<div className="">
+				<Header
+					header="Pet Heart"
+					headerParagraph="s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has  "
+				/>
+				<div className="bg-backgroundLight pt-5 pb-5">
+					<Title title="Mapy" />
+					<div className="flex items-center space-x-2.5 ml-8 mr-8  ">
+						<p className="px-1 leading-7  text-slate-600">
+							Hledáte ideální místo pro venčení vašeho čtyřnohého přítele v
+							Praze? Máme pro vás skvělou zprávu! Představujeme „Naši mapu“ –
+							vaši jedničku pro nalezení perfektního místa pro venčení psů ve
+							vašem okolí.{" "}
+						</p>
+						<img className="w-1/3 rounded-md" src={mapa} alt="mapa" />
+					</div>
+					<div className="flex justify-center pb-5 ">
+						<Button
+							onClick={(event) => console.log("klik", event)}
+							type="secondary"
+						>
+							Více
+						</Button>
+					</div>
+				</div>
+				<div className="pt-5 pb-5">
 					<Title title="Blog" />
 					<div className="flex justify-around w-full">
 						<div className=" ml-2 mr-2 ">
@@ -113,9 +137,23 @@ export const Root = () => {
 						</div>
 					</div>
 				</div>
-			</div>
-			<div id="detail">
-				<Outlet />
+				<div className="items-center  bg-backgroundLight pt-5 pb-5">
+					<Title title="Něco o mně" />
+					<AboutMe article="Milovnice psů a hrdá majitelka dvouleté Ary, to jsem já. Společně objevujeme nová místa a učíme se poznávat svět kolem nás. S touhou pomoci i dalším pejskařům v hledání ideálních míst pro venčení a možná i pro vzájemná setkání. Věřím, že společně můžeme vytvořit komunitu milovníků psů, kteří se podělí o své zkušenosti a tipy na nejlepší místa pro naše čtyřnoháče." />
+				</div>
+				<div className="items-center bg-darkGreen   pt-5 pb-5">
+					<Title title="Kontakt" />
+					<h3 className="text-center text-white  line-clamp-3 ">
+						Michaela Šimková
+					</h3>
+					<p className="text-center  text-white   line-clamp-3 ">
+						email: simkova.misa@seznam.cz
+					</p>
+				</div>
+
+				<div id="detail">
+					<Outlet />
+				</div>
 			</div>
 		</>
 	);
