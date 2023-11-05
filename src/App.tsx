@@ -1,5 +1,4 @@
 import "./App.css";
-import { Header } from "./components/Header";
 import ToDoItem from "./components/ToDoItem";
 
 const TODOS = [
@@ -32,7 +31,6 @@ const TODOS = [
 function App() {
 	return (
 		<>
-			<Header />
 			{TODOS.map((item) => (
 				<ToDoItem
 					// {...item}

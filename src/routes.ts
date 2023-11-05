@@ -1,8 +1,7 @@
 export const ROUTES = {
 	index: () => "/",
-	contacts: (contactId?: string) => `contacts/${contactId ?? ":contactId"}`,
-	about: () => "/about",
 	maps: () => "/maps",
+	blog: () => "/blog",
 	login: () => "/login",
 	signin: () => "/signin",
 };
