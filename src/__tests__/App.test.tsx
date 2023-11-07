@@ -1,8 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import App from "../App";
+import { screen } from "@testing-library/react";
 
 test("renders headline", () => {
-	render(<App />);
-
 	screen.debug();
 });

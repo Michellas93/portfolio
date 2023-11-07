@@ -13,10 +13,10 @@ export const Header = ({ header, headerParagraph }: Props) => {
 				<h1 className="text-6xl mt-4 ">{header}</h1>
 				<p className="leading-8 mt-4 text-slate-600 ">{headerParagraph}</p>
 				<div className="flex mt-4 space-x-3">
-					<ButtonLink link="/Log in" type="primary">
+					<ButtonLink link="/Log in" variant="primary">
 						Log in
 					</ButtonLink>
-					<ButtonLink link="/Sign in" type="secondary">
+					<ButtonLink link="/Sign in" variant="secondary">
 						Sign in
 					</ButtonLink>
 				</div>

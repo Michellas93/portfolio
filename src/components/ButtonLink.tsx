@@ -17,6 +17,4 @@ export const ButtonLink = ({ link, ...props }: Props) => {
 			/>
 		</div>
 	);
-	{
-	}
 };
