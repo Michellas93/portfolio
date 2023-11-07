@@ -4,7 +4,6 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import ErrorPage from "./pages/ErrorPage";
 import { ROUTES } from "./routes.ts";
-
 import { Root } from "./pages/Root.tsx";
 import { Maps } from "./pages/Maps.tsx";
 import { Login } from "./pages/Login.tsx";
