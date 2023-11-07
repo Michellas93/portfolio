@@ -11,6 +11,7 @@ import { Login } from "./pages/Login.tsx";
 import { SignIn } from "./pages/SignIn.tsx";
 import { Blog } from "./pages/Blog.tsx";
 import "./tailwind.css";
+import { Index } from "./pages/Index.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
 		errorElement: <ErrorPage />,
 
 		children: [
+			{
+				index: true,
+				element: <Index />,
+			},
 			{
 				path: ROUTES.maps(),
 				element: <Maps />,

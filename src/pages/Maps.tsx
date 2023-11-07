@@ -1,3 +1,3 @@
 export const Maps = () => {
-	return <div></div>;
+	return <div>Ahoj</div>;
 };
