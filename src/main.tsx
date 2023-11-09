@@ -28,6 +28,10 @@ const router = createBrowserRouter([
 				element: <Maps />,
 			},
 			{
+				path: ROUTES.blog(),
+				element: <Blog />,
+			},
+			{
 				path: ROUTES.login(),
 				element: <Blog />,
 			},

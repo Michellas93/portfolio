@@ -5,11 +5,10 @@ export const Root = () => {
 	return (
 		<>
 			<Navbar />
-
 			<div id="detail">
 				<Outlet />
 			</div>
-			<footer className="text-center">
+			<footer className="text-center bg-darkGreen">
 				Copyright &copy; Michaela Šimková 2023
 			</footer>
 		</>

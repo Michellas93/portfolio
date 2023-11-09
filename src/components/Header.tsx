@@ -1,4 +1,4 @@
-import pohyb from "../assets/animation-3993429_640.png";
+import pohyb from "../assets/venceni.png";
 import { ButtonLink } from "./ButtonLink";
 
 interface Props {

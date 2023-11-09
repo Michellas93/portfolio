@@ -13,7 +13,7 @@ export const Section = ({ title, type, children }: Props) => {
 	return (
 		<div
 			className={cs("", {
-				"bg-backgroundLight": isLight,
+				"bg-whitet": isLight,
 				"bg-darkBrown ": !isLight,
 			})}
 		>
