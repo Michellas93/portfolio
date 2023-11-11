@@ -3,7 +3,7 @@ import { BlogCards } from "../components/sections/BlogCards";
 import MapSection from "../components/sections/MapSection";
 import { Header } from "../components/Header";
 import AboutSection from "../components/sections/AboutSection";
-import ContacSection from "../components/sections/ContacSection";
+import { ContacSection } from "../components/sections/ContacSection";
 
 export const Index = () => {
 	return (

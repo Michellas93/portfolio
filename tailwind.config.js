@@ -8,7 +8,7 @@ export default {
 				colorL: " #ddbea9",
 				darkGreen: "#6b705c",
 				darkBrown: " #cb997e",
-				backgroundLight: "#ffe8d6",
+				whiteT: "#ffe8d6",
 				colorLightGreen: "#a5a58d",
 			},
 		},

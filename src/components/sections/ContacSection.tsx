@@ -1,12 +1,10 @@
 import { Section } from "../Section";
 
-const Contacsection = () => {
+export const ContacSection = () => {
 	return (
 		<Section title="kontakt" type="light">
 			<p className="text-center">Michaela Šimkova</p>
-			<p className="text-center mb-4">simkova.misa@seznam.cz</p>
+			<p className="text-center pb-2">simkova.misa@seznam.cz</p>
 		</Section>
 	);
 };
-
-export default Contacsection;
