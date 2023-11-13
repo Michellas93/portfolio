@@ -1,4 +1,5 @@
 import pohyb from "../assets/venceni.png";
+import { ROUTES } from "../routes";
 import { ButtonLink } from "./ButtonLink";
 
 interface Props {
@@ -16,8 +17,8 @@ export const Header = ({ header, headerParagraph }: Props) => {
 					<ButtonLink link="/Log in" variant="primary">
 						Log in
 					</ButtonLink>
-					<ButtonLink link="/Sign in" variant="secondary">
-						Sign in
+					<ButtonLink link={ROUTES.signup()} variant="secondary">
+						Sign up
 					</ButtonLink>
 				</div>
 			</div>

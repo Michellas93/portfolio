@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Router } from "react-router-dom";
 import { ButtonLink } from "./ButtonLink";
 import { Logo } from "./Logo";
 import { ROUTES } from "../routes";
@@ -43,8 +43,8 @@ const Navbar = () => {
 				<ButtonLink className="mr-2 ms:px-2" link="#" variant="primary">
 					Log in
 				</ButtonLink>
-				<ButtonLink link="#" variant="secondary">
-					Sign in
+				<ButtonLink link={ROUTES.signup()} variant="secondary">
+					Sign up
 				</ButtonLink>
 			</div>
 		</nav>

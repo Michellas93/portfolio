@@ -3,5 +3,5 @@ export const ROUTES = {
 	maps: () => "/maps",
 	blog: () => "/blog",
 	login: () => "/login",
-	signin: () => "/signin",
+	signup: () => "/signup",
 };
