@@ -1,8 +1,8 @@
 import { z } from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/config";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUpSchema = z
 	.object({
@@ -28,14 +28,13 @@ export const SignUpForm = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<SignUpSchemaType>({ resolver: zodResolver(SignUpSchema) });
-	console.log(auth.currentUser);
 
 	const onSubmit: SubmitHandler<SignUpSchemaType> = async ({
 		email,
 		password,
 	}) => {
 		try {
-			// await createUserWithEmailAndPassword(auth, email, password);
+			await createUserWithEmailAndPassword(auth, email, password);
 		} catch (error) {
 			console.error(error);
 		}
