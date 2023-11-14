@@ -2,12 +2,12 @@ import { ButtonLink } from "./ButtonLink";
 import { ROUTES } from "../routes";
 
 interface Props {
-	imgCard: string;
+	img: string;
 	titleCard: string;
 	paragrapCard: string;
 }
 
-export const CardItem = ({ imgCard, titleCard, paragrapCard }: Props) => {
+export const CardItem = ({ img, titleCard, paragrapCard }: Props) => {
 	return (
 		<div>
 			<div className="text-center w-60 shadow  ">
@@ -17,7 +17,7 @@ export const CardItem = ({ imgCard, titleCard, paragrapCard }: Props) => {
 				>
 					<img
 						className=" w-60   object-cover h-52 rounded-md"
-						src={imgCard}
+						src={img}
 						alt="granule"
 					/>
 				</div>
