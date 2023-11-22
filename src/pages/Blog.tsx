@@ -1,3 +1,5 @@
-export const Blog = () => {
-	return <div>můj blog</div>;
+const Blog = () => {
+	return <div>blog</div>;
 };
+
+export default Blog;

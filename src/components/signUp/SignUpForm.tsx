@@ -2,6 +2,7 @@ import { z } from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { auth, googleProvider } from "../../firebase/config";
+
 import {
 	createUserWithEmailAndPassword,
 	signInWithPopup,
@@ -35,6 +36,7 @@ export const SignUpForm = () => {
 		formState: { errors },
 	} = useForm<SignUpSchemaType>({ resolver: zodResolver(SignUpSchema) });
 
+	// tlacitko na prihlaseni
 	const onSubmit: SubmitHandler<SignUpSchemaType> = async ({
 		email,
 		password,
@@ -45,7 +47,7 @@ export const SignUpForm = () => {
 			console.error(error);
 		}
 	};
-	const sisgnWithGoogle = async ({}) => {
+	const signUpWithGoogle = async ({}) => {
 		try {
 			await signInWithPopup(auth, googleProvider);
 		} catch (error) {
@@ -53,6 +55,7 @@ export const SignUpForm = () => {
 		}
 	};
 
+	// tlacitko na odhlaseni
 	const logOut = async ({}) => {
 		try {
 			await signOut(auth);
@@ -129,7 +132,7 @@ export const SignUpForm = () => {
 
 				<div className="flex flex-col items-center ">
 					<p className="m-2">nebo</p>
-					<button onClick={sisgnWithGoogle}>
+					<button onClick={signUpWithGoogle}>
 						<img className="w-8" src={google} />
 					</button>
 					<button
