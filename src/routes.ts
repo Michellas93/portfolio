@@ -1,7 +1,9 @@
 export const ROUTES = {
-	index: () => "/",
-	maps: () => "/maps",
-	blog: () => "/blog",
-	login: () => "/login",
-	signup: () => "/signup",
+  index: () => "/",
+  maps: () => "/maps",
+  list: () => "/list",
+  blog: () => "/blog",
+  login: () => "/login",
+  signup: () => "/signup",
+  logout: () => "/logout",
 };
