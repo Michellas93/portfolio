@@ -28,7 +28,7 @@ export const SignUpForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting, isLoading },
   } = useForm<SignUpSchemaType>({ resolver: zodResolver(SignUpSchema) });
 
   return (
@@ -61,7 +61,7 @@ export const SignUpForm = () => {
           register={register("confirm")}
         />
 
-        <SubmitButton />
+        <SubmitButton isLoading={isLoading || isSubmitting} />
 
         <ThirdPartyProviderButtons />
       </form>

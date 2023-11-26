@@ -20,20 +20,15 @@ export const LogInForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isLoading, isSubmitting },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = () =>
-    handleSubmit((formData) => {
-      loginWithEmailPassword(formData);
-    });
-
   return (
     <div className="flex justify-center items-center h-screen">
       <form
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit((formData) => loginWithEmailPassword(formData))}
         className="flex flex-col items-center p-4 w-96 border-2 border-darkGreen bg-whiteT"
       >
         <Field
@@ -50,7 +45,8 @@ export const LogInForm = () => {
           type="password"
           register={register("password")}
         />
-        <SubmitButton />
+
+        <SubmitButton isLoading={isLoading || isSubmitting} />
         <ThirdPartyProviderButtons />
       </form>
     </div>
