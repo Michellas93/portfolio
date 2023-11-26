@@ -7,32 +7,16 @@ import { useAuth } from "../firebase/AuthContext";
 import { Button } from "./Button";
 import { logOut } from "../firebase/utils";
 
+const NAVBAR_ITEMS = [
+  { link: ROUTES.index(), text: "Domů" },
+  { link: ROUTES.maps(), text: "Mapy" },
+  { link: ROUTES.list(), text: "Seznam" },
+  { link: ROUTES.blog(), text: "Blog" },
+];
+
 const Navbar = () => {
   const { user } = useAuth();
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navbarItems = [
-    {
-      className: "px-4 pt-2 hover:font-extrabold text-white",
-      link: ROUTES.index(),
-      text: "Domů",
-    },
-    {
-      className: "px-4 pt-2 hover:font-extrabold text-white",
-      link: ROUTES.maps(),
-      text: "Mapy",
-    },
-    {
-      className: "px-4 pt-2 hover:font-extrabold text-white",
-      link: ROUTES.list(),
-      text: "Seznam",
-    },
-    {
-      className: "px-4 pt-2 hover:font-extrabold text-white",
-      link: ROUTES.blog(),
-      text: "Blog",
-    },
-  ];
 
   return (
     <nav className="navbar py-2 rounded-xl mt-5 mx-2 bg-darkGreen flex justify-between pl-4 pr-4 ">
@@ -65,8 +49,11 @@ const Navbar = () => {
         } flex-col w-full md:w-auto md:flex md:flex-row md:items-center  self-center  `}
       >
         <ul className="flex bg-darkGreen flex-col self-center md:flex-row md:items-center ">
-          {navbarItems.map((item) => (
-            <li className={item.className} key={item.text}>
+          {NAVBAR_ITEMS.map((item) => (
+            <li
+              className="px-4 pt-2 hover:font-extrabold text-white"
+              key={item.text}
+            >
               <NavLink
                 to={item.link}
                 onClick={() => setIsMenuOpen(false)}
