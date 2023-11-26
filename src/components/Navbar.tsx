@@ -45,7 +45,7 @@ const Navbar = () => {
       <div className="flex items-center">
         <button
           className="md:hidden  flex"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={() => setIsMenuOpen((prevState) => !prevState)}
         >
           <svg
             viewBox="0 0 20 20"
