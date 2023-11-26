@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginWithEmailPassword } from "../../firebase/utils";
 import { Field } from "../form/Field";
 import { SubmitButton } from "../form/SubmitButton";
-import { UseProviderButtons } from "../form/UseProviderButtons";
+import { ThirdPartyProviderButtons } from "../form/ThirdPartyProviderButtons";
 
 type FormData = {
   email: string;
@@ -51,7 +51,7 @@ export const LogInForm = () => {
           register={register("password")}
         />
         <SubmitButton />
-        <UseProviderButtons />
+        <ThirdPartyProviderButtons />
       </form>
     </div>
   );

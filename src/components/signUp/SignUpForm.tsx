@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpWithEmailPassword } from "../../firebase/utils";
 import { Field } from "../form/Field";
 import { SubmitButton } from "../form/SubmitButton";
-import { UseProviderButtons } from "../form/UseProviderButtons";
+import { ThirdPartyProviderButtons } from "../form/ThirdPartyProviderButtons";
 
 const SignUpSchema = z
   .object({
@@ -63,7 +63,7 @@ export const SignUpForm = () => {
 
         <SubmitButton />
 
-        <UseProviderButtons />
+        <ThirdPartyProviderButtons />
       </form>
     </div>
   );
