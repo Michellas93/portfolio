@@ -36,7 +36,7 @@ export const useFetchData = (collectionName: string) => {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [collectionName]);
   return {
     data,
     isLoading,

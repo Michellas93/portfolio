@@ -1,9 +1,10 @@
 import { z } from "zod";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { auth, googleProvider } from "../../firebase/config";
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import google from "../../assets/icons8-google-48.png";
+import { signUpWithEmailPassword } from "../../firebase/utils";
+import { Field } from "../form/Field";
+import { SubmitButton } from "../form/SubmitButton";
+import { UseProviderButtons } from "../form/UseProviderButtons";
 
 const SignUpSchema = z
   .object({
@@ -13,7 +14,6 @@ const SignUpSchema = z
   })
   .refine(
     (data) => {
-      console.log(data);
       return data.password === data.confirm;
     },
     {
@@ -31,96 +31,39 @@ export const SignUpForm = () => {
     formState: { errors },
   } = useForm<SignUpSchemaType>({ resolver: zodResolver(SignUpSchema) });
 
-  // tlacitko na prihlaseni
-  const onSubmit: SubmitHandler<SignUpSchemaType> = async ({
-    email,
-    password,
-  }) => {
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const signUpWithGoogle = async ({}) => {
-    try {
-      await signInWithPopup(auth, googleProvider);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <div className="flex justify-center items-center h-screen">
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit((formData) => signUpWithEmailPassword(formData))}
         className="flex flex-col items-center p-4 w-96 border-2 border-darkGreen  bg-whiteT"
       >
-        <div className="form-group w-full">
-          {errors.email && (
-            <span className="text-red-500 text-xs">{errors.email.message}</span>
-          )}
-          <label className="block text-left">
-            <span className="block text-sm font-medium   text-slate-600">
-              Email*
-            </span>
-          </label>
-          <input
-            className="input w-full p-3  rounded mb-4 border-2 border-darkGreen "
-            placeholder="email"
-            {...register("email")}
-          />
-        </div>
-        <div className="form-group w-full">
-          {errors.password && (
-            <span className="text-red-500 text-xs">
-              {errors.password.message}
-            </span>
-          )}
-          <label className="block text-left">
-            <span className="block text-sm font-medium  text-slate-600 ">
-              Heslo*
-            </span>
-          </label>
-          <input
-            type="password"
-            className="input w-full p-3  rounded mb-4 border-2 border-darkGreen "
-            placeholder="password"
-            {...register("password")}
-          />
-        </div>
-        <div className="form-group w-full">
-          {errors.confirm && (
-            <span className="text-red-500 text-xs">
-              {errors.confirm.message}
-            </span>
-          )}
-          <label className="block text-left">
-            <span className="block text-sm font-medium  text-slate-600 ">
-              Zopakuj heslo*
-            </span>
-          </label>
-          <input
-            type="password"
-            className="input w-full p-3  rounded mb-4 border-2 border-darkGreen"
-            placeholder="confirm password"
-            {...register("confirm")}
-          />
-        </div>
+        <Field
+          label="Email"
+          error={errors?.email}
+          placeholder="Your email"
+          type="email"
+          register={register("email")}
+        />
 
-        <button
-          type="submit"
-          className="w-full bg-darkGreen text-white p-2  hover:border-2 border-neutral-50 rounded-3xl"
-        >
-          Submit
-        </button>
+        <Field
+          label="Heslo"
+          error={errors?.password}
+          placeholder="Your password"
+          type="password"
+          register={register("password")}
+        />
 
-        <div className="flex flex-col items-center ">
-          <p className="m-2">nebo</p>
-          <button onClick={signUpWithGoogle}>
-            <img className="w-8" src={google} />
-          </button>
-        </div>
+        <Field
+          label="Zopakuj heslo"
+          error={errors?.confirm}
+          placeholder="Confirm your password"
+          type="password"
+          register={register("confirm")}
+        />
+
+        <SubmitButton />
+
+        <UseProviderButtons />
       </form>
     </div>
   );

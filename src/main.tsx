@@ -12,8 +12,9 @@ import "./tailwind.css";
 import { Index } from "./pages/Index.tsx";
 import Blog from "./pages/Blog.tsx";
 import { List } from "./pages/List.tsx";
-import LogOut from "./pages/LogOut.tsx";
-import { AuthProvider } from "./AuthContext.tsx";
+
+import { AuthProvider } from "./firebase/AuthContext.tsx";
+import { AnonymousRoute } from "./pages/AnonymousRoute.tsx";
 
 const router = createBrowserRouter([
   {
@@ -38,18 +39,18 @@ const router = createBrowserRouter([
         path: ROUTES.blog(),
         element: <Blog />,
       },
-
       {
-        path: ROUTES.login(),
-        element: <Login />,
-      },
-      {
-        path: ROUTES.signup(),
-        element: <SignUp />,
-      },
-      {
-        path: ROUTES.logout(),
-        element: <LogOut />,
+        element: <AnonymousRoute />,
+        children: [
+          {
+            path: ROUTES.login(),
+            element: <Login />,
+          },
+          {
+            path: ROUTES.signup(),
+            element: <SignUp />,
+          },
+        ],
       },
     ],
   },

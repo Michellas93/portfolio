@@ -75,7 +75,7 @@ export const Maps = () => {
         </div>
       </div>
       <div className="flex justify-center">
-        <img className="max-w-3xl" src={maps} />
+        <img className="max-w-3xl" src={maps} alt="Map" />
       </div>
     </Section>
   );

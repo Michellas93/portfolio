@@ -1,14 +1,15 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ButtonLink } from "./ButtonLink";
 import { Logo } from "./Logo";
 import { ROUTES } from "../routes";
 import { useState } from "react";
-import { useAuth } from "../AuthContext";
+import { useAuth } from "../firebase/AuthContext";
 import { Button } from "./Button";
+import { logOut } from "../firebase/utils";
 
 const Navbar = () => {
-  const navigate = useNavigate();
-  const { isAuthenticated, logoutUser } = useAuth();
+  const { user } = useAuth();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navbarItems = [
     {
@@ -33,10 +34,6 @@ const Navbar = () => {
     },
   ];
 
-  const handleLogout = () => {
-    logoutUser();
-    navigate(ROUTES.login());
-  };
   return (
     <nav className="navbar py-2 rounded-xl mt-5 mx-2 bg-darkGreen flex justify-between pl-4 pr-4 ">
       <div className="flex items-center ">
@@ -84,8 +81,8 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flex flex-col md:flex-row md:items-center sm:flex-row sm:justify-end  ">
-        {isAuthenticated ? (
-          <Button onClick={handleLogout} variant="secondary">
+        {user ? (
+          <Button onClick={() => logOut()} variant="secondary">
             Logout
           </Button>
         ) : (
