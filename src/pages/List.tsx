@@ -13,8 +13,9 @@ export const ListContent = () => {
   if (!data) {
     return <div>nemám data</div>;
   }
+
   return data.map((location) => {
-    return <ListItem location={location} key={location.id} />;
+    return <ListItem location={location.Props} key={location.id} />;
   });
 };
 
