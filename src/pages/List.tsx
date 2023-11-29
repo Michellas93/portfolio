@@ -1,4 +1,6 @@
+import { ListItem } from "../components/ListItem";
 import { Section } from "../components/Section";
+import { getPathReference } from "../firebase/config";
 import { useFetchData } from "../hooks/useFetchData";
 
 export const ListContent = () => {
@@ -13,20 +15,7 @@ export const ListContent = () => {
     return <div>nemám data</div>;
   }
   return data.map((location) => {
-    return (
-      <div key={location.id} className="flex flex-col text-center">
-        <div>{location.name} </div>
-        <div> {location.region}</div>
-        <div>{location.distance}</div>
-        <div> {location.types}</div>
-        <div> {location.freeRange}</div>
-        <div> {location.description} </div>
-        <div> {location.likes}</div>
-      </div>
-    );
-
-    //az budu na strance ne useFetchData ale docs
-    // obrayek mista -> firebaseStorage
+    return <ListItem location={location} key={location.id} />;
   });
 };
 
