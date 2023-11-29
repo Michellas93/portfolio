@@ -15,7 +15,7 @@ export const ListContent = () => {
   }
 
   return data.map((location) => {
-    return <ListItem location={location.Props} key={location.id} />;
+    return <ListItem location={location} key={location.id} />;
   });
 };
 
