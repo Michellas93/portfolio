@@ -1,6 +1,5 @@
 import { ListItem } from "../components/ListItem";
 import { Section } from "../components/Section";
-import { getPathReference } from "../firebase/config";
 import { useFetchData } from "../hooks/useFetchData";
 
 export const ListContent = () => {
