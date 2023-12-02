@@ -1,19 +1,10 @@
 import { getDownloadURL } from "firebase/storage";
 import { useEffect, useState } from "react";
 import { getPathReference } from "../firebase/config";
+import { LocationType } from "../types";
 
 interface Props {
-  location: {
-    id: string;
-    name: string;
-    region: string;
-    distance: number;
-    types: string;
-    freeRange: string;
-    description: string;
-    imagesrc: string;
-    likes: number;
-  };
+  location: LocationType;
 }
 
 export const ListItem = ({ location }: Props) => {
@@ -24,7 +15,7 @@ export const ListItem = ({ location }: Props) => {
       setImageUrl(url);
     };
     getImageUrl();
-  }, []);
+  }, [location.imagesrc]);
   return (
     <div className="flex flex-col text-center">
       <div>{location.name} </div>
@@ -33,7 +24,7 @@ export const ListItem = ({ location }: Props) => {
       <div> {location.types}</div>
       <div> {location.freeRange}</div>
       <div> {location.description} </div>
-      <img src={imageUrl} />
+      <img src={imageUrl} alt="Location" />
       <div> {location.likes}</div>
     </div>
   );

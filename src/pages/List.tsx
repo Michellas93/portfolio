@@ -1,9 +1,10 @@
 import { ListItem } from "../components/ListItem";
 import { Section } from "../components/Section";
 import { useFetchData } from "../hooks/useFetchData";
+import { LocationType } from "../types";
 
-export const ListContent = () => {
-  const { data, isLoading, error } = useFetchData("Locations");
+const ListContent = () => {
+  const { data, isLoading, error } = useFetchData<LocationType>("Locations");
   if (isLoading) {
     return <div>Loading...</div>;
   }
