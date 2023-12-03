@@ -11,41 +11,55 @@ import { SignUp } from "./pages/SignUp.tsx";
 import "./tailwind.css";
 import { Index } from "./pages/Index.tsx";
 import Blog from "./pages/Blog.tsx";
+import { List } from "./pages/List.tsx";
+
+import { AuthProvider } from "./firebase/AuthContext.tsx";
+import { AnonymousRoute } from "./pages/AnonymousRoute.tsx";
 
 const router = createBrowserRouter([
-	{
-		path: ROUTES.index(),
-		element: <Root />,
-		errorElement: <ErrorPage />,
+  {
+    path: ROUTES.index(),
+    element: <Root />,
+    errorElement: <ErrorPage />,
 
-		children: [
-			{
-				index: true,
-				element: <Index />,
-			},
-			{
-				path: ROUTES.maps(),
-				element: <Maps />,
-			},
-			{
-				path: ROUTES.blog(),
-				element: <Blog />,
-			},
-
-			{
-				path: ROUTES.login(),
-				element: <Login />,
-			},
-			{
-				path: ROUTES.signup(),
-				element: <SignUp />,
-			},
-		],
-	},
+    children: [
+      {
+        index: true,
+        element: <Index />,
+      },
+      {
+        path: ROUTES.maps(),
+        element: <Maps />,
+      },
+      {
+        path: ROUTES.list(),
+        element: <List />,
+      },
+      {
+        path: ROUTES.blog(),
+        element: <Blog />,
+      },
+      {
+        element: <AnonymousRoute />,
+        children: [
+          {
+            path: ROUTES.login(),
+            element: <Login />,
+          },
+          {
+            path: ROUTES.signup(),
+            element: <SignUp />,
+          },
+        ],
+      },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-	<React.StrictMode>
-		<RouterProvider router={router} />
-	</React.StrictMode>
+  <React.StrictMode>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  </React.StrictMode>
 );
