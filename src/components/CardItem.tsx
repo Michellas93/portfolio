@@ -27,7 +27,22 @@ export const CardItem = ({ img, titleCard, paragrapCard }: Props) => {
         </p>
 
         <div className="flex justify-center pb-5 mt-2  ">
-          <ButtonLink link={ROUTES.blog()} variant="secondary">
+          <ButtonLink
+            link={ROUTES.blog()}
+            variant="secondary"
+            location={{
+              id: "",
+              name: "",
+              region: "",
+              distance: 0,
+              types: "",
+              freeRange: "",
+              description: "",
+              imagesrc: "",
+              likes: 0,
+            }}
+            imageUrl={""}
+          >
             Více
           </ButtonLink>
         </div>

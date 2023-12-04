@@ -42,18 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: ROUTES.content(),
-        element: (
-          <Content
-            location={{
-              id: "",
-              distance: 0,
-              types: "",
-              freeRange: "",
-              imagesrc: "",
-              likes: 0,
-            }}
-          />
-        ),
+        element: <Content />,
       },
       {
         path: ROUTES.park(),

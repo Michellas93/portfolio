@@ -74,10 +74,40 @@ const Navbar = () => {
           </Button>
         ) : (
           <>
-            <ButtonLink link={ROUTES.login()} variant="primary">
+            <ButtonLink
+              link={ROUTES.login()}
+              variant="primary"
+              location={{
+                id: "",
+                name: "",
+                region: "",
+                distance: 0,
+                types: "",
+                freeRange: "",
+                description: "",
+                imagesrc: "",
+                likes: 0,
+              }}
+              imageUrl={""}
+            >
               Log in
             </ButtonLink>
-            <ButtonLink link={ROUTES.signup()} variant="secondary">
+            <ButtonLink
+              link={ROUTES.signup()}
+              variant="secondary"
+              location={{
+                id: "",
+                name: "",
+                region: "",
+                distance: 0,
+                types: "",
+                freeRange: "",
+                description: "",
+                imagesrc: "",
+                likes: 0,
+              }}
+              imageUrl={""}
+            >
               Sign up
             </ButtonLink>
           </>

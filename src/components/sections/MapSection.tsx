@@ -21,7 +21,22 @@ const MapSection = () => {
           <img className="w-1/3 rounded-md" src={mapUrl} alt="Map section" />
         </div>
         <div className="flex justify-center pb-5 ">
-          <ButtonLink link={ROUTES.maps()} variant="secondary">
+          <ButtonLink
+            link={ROUTES.maps()}
+            variant="secondary"
+            location={{
+              id: "",
+              name: "",
+              region: "",
+              distance: 0,
+              types: "",
+              freeRange: "",
+              description: "",
+              imagesrc: "",
+              likes: 0,
+            }}
+            imageUrl={""}
+          >
             Více
           </ButtonLink>
         </div>

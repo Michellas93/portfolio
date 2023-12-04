@@ -17,10 +17,40 @@ export const Header = ({ header, headerParagraph }: Props) => {
         <p className="leading-8 mt-4 text-slate-600 ">{headerParagraph}</p>
         {!user && (
           <div className="flex mt-4 space-x-3">
-            <ButtonLink link={ROUTES.login()} variant="primary">
+            <ButtonLink
+              link={ROUTES.login()}
+              variant="primary"
+              location={{
+                id: "",
+                name: "",
+                region: "",
+                distance: 0,
+                types: "",
+                freeRange: "",
+                description: "",
+                imagesrc: "",
+                likes: 0,
+              }}
+              imageUrl={""}
+            >
               Log in
             </ButtonLink>
-            <ButtonLink link={ROUTES.signup()} variant="secondary">
+            <ButtonLink
+              link={ROUTES.signup()}
+              variant="secondary"
+              location={{
+                id: "",
+                name: "",
+                region: "",
+                distance: 0,
+                types: "",
+                freeRange: "",
+                description: "",
+                imagesrc: "",
+                likes: 0,
+              }}
+              imageUrl={""}
+            >
               Sign up
             </ButtonLink>
           </div>
