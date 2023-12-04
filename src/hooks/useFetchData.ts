@@ -20,7 +20,6 @@ export const useFetchData = <T extends object>(collectionName: string) => {
 
   useEffect(() => {
     setIsLoading(true);
-    // najit ve firebase document
     const userRef = collection(db, collectionName).withConverter(
       assignTypes<T>()
     );

@@ -7,5 +7,13 @@ export type LocationType = {
   freeRange: string;
   description: string;
   imagesrc: string;
+  parkDescription: string;
   likes: number;
+  listpark: string;
+  descriptionRegion: string;
+  louka: string;
+  park: string;
+  les: string;
+  lesDescription: string;
+  listLes: string;
 };

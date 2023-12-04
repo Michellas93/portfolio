@@ -15,6 +15,11 @@ import { List } from "./pages/List.tsx";
 
 import { AuthProvider } from "./firebase/AuthContext.tsx";
 import { AnonymousRoute } from "./pages/AnonymousRoute.tsx";
+import { Content } from "./components/Content.tsx";
+import { ParkSeznam } from "./components/sectionParks/ParkSeznam.tsx";
+import { Park } from "./components/sectionParks/Park.tsx";
+import { Louka } from "./components/sectionLouka/Louka.tsx";
+import { Les } from "./components/sectionLes/les.tsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +39,38 @@ const router = createBrowserRouter([
       {
         path: ROUTES.list(),
         element: <List />,
+      },
+      {
+        path: ROUTES.content(),
+        element: (
+          <Content
+            location={{
+              id: "",
+              distance: 0,
+              types: "",
+              freeRange: "",
+              imagesrc: "",
+              likes: 0,
+            }}
+          />
+        ),
+      },
+      {
+        path: ROUTES.park(),
+        element: <Park />,
+      },
+      {
+        path: ROUTES.louka(),
+        element: <Louka />,
+      },
+      {
+        path: ROUTES.les(),
+        element: <Les />,
+      },
+
+      {
+        path: ROUTES.parkseznam(),
+        element: <ParkSeznam />,
       },
       {
         path: ROUTES.blog(),
