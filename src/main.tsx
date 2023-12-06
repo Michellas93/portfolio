@@ -10,7 +10,7 @@ import { Login } from "./pages/Login.tsx";
 import { SignUp } from "./pages/SignUp.tsx";
 import "./tailwind.css";
 import { Index } from "./pages/Index.tsx";
-import Blog from "./pages/Blog.tsx";
+
 import { List } from "./pages/List.tsx";
 
 import { AuthProvider } from "./firebase/AuthContext.tsx";
