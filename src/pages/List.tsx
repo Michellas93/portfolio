@@ -1,10 +1,10 @@
 import { ListItem } from "../components/ListItem";
 import { Section } from "../components/Section";
-import { useFetchData } from "../hooks/useFetchData";
-import { LocationType } from "../types";
+import { useFetchCollection } from "../hooks/useFetchCollection";
+import { PointType } from "../types";
 
 const ListContent = () => {
-  const { data, isLoading, error } = useFetchData<LocationType>("Locations");
+  const { data, isLoading, error } = useFetchCollection<PointType>("point");
   if (isLoading) {
     return <div>Loading...</div>;
   }

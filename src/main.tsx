@@ -15,6 +15,7 @@ import { List } from "./pages/List.tsx";
 
 import { AuthProvider } from "./firebase/AuthContext.tsx";
 import { AnonymousRoute } from "./pages/AnonymousRoute.tsx";
+import { Point } from "./pages/Point.tsx";
 
 const router = createBrowserRouter([
   {
@@ -36,8 +37,8 @@ const router = createBrowserRouter([
         element: <List />,
       },
       {
-        path: ROUTES.blog(),
-        element: <Blog />,
+        path: ROUTES.point(),
+        element: <Point />,
       },
       {
         element: <AnonymousRoute />,

@@ -6,4 +6,5 @@ export const ROUTES = {
   login: () => "/login",
   signup: () => "/signup",
   logout: () => "/logout",
+  point: (id?: string) => `/point/${id ?? ":id"}`,
 };

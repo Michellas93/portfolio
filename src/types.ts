@@ -9,3 +9,7 @@ export type LocationType = {
   imagesrc: string;
   likes: number;
 };
+export type PointType = {
+  id: number;
+  name: string;
+};

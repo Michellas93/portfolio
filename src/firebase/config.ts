@@ -1,6 +1,6 @@
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import firebase from "firebase/compat/app";
-import { getFirestore } from "firebase/firestore";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { getStorage, ref } from "firebase/storage";
 
 const firebaseConfig = {
@@ -19,3 +19,5 @@ export const googleProvider = new GoogleAuthProvider();
 export const db = getFirestore(app);
 
 export const getPathReference = (reference: string) => ref(storage, reference);
+export const getCollectionItem = async (collectionName: string, id: string) =>
+  await getDoc(doc(db, collectionName, id));

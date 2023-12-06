@@ -2,6 +2,8 @@ import { getDownloadURL } from "firebase/storage";
 import { useEffect, useState } from "react";
 import { getPathReference } from "../firebase/config";
 import { LocationType } from "../types";
+import { ButtonLink } from "./ButtonLink";
+import { ROUTES } from "../routes";
 
 interface Props {
   location: LocationType;
@@ -19,13 +21,7 @@ export const ListItem = ({ location }: Props) => {
   return (
     <div className="flex flex-col text-center">
       <div>{location.name} </div>
-      <div> {location.region}</div>
-      <div>{location.distance}</div>
-      <div> {location.types}</div>
-      <div> {location.freeRange}</div>
-      <div> {location.description} </div>
-      <img src={imageUrl} alt="Location" />
-      <div> {location.likes}</div>
+      <ButtonLink link={ROUTES.point(location.id)}>Více</ButtonLink>
     </div>
   );
 };
