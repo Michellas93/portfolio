@@ -9,6 +9,7 @@ export const Point = () => {
     const getData = async () => {
       if (id) {
         const snap = await getCollectionItem("point", id);
+        return snap;
       }
     };
     getData();

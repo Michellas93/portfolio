@@ -16,7 +16,15 @@ const ListContent = () => {
   }
 
   return data.map((location) => {
-    return <ListItem location={location} key={location.id} />;
+    return (
+      <ListItem
+        key={location.id}
+        point={{
+          id: 0,
+          name: "",
+        }}
+      />
+    );
   });
 };
 
