@@ -22,14 +22,14 @@ export const useFetchCollection = <T extends object>(
 
   useEffect(() => {
     setIsLoading(true);
-    // najit ve firebase document
+
     const userRef = collection(db, collectionName).withConverter(
       assignTypes<T>()
     );
     const unsubscribe = onSnapshot(
       userRef,
       (snapshot) => {
-        if (snapshot) {
+        if (!snapshot.empty) {
           const result = snapshot.docs.map((item) => {
             return {
               ...item.data(),
@@ -42,12 +42,13 @@ export const useFetchCollection = <T extends object>(
           setError(null);
         } else {
           setData(null);
-          setError("Žádná nová kniha k vypsání");
+          setError("Záznam není ne webové stránce");
           setIsLoading(false);
         }
       },
       (err) => {
         setError(err.message);
+        setIsLoading(false);
       }
     );
     return () => {

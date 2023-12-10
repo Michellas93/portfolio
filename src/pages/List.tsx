@@ -9,22 +9,14 @@ const ListContent = () => {
     return <div>Loading...</div>;
   }
   if (error) {
-    return <div>Chyba: {error}</div>;
+    return <div>Stránka nenalezena: {error}</div>;
   }
   if (!data) {
-    return <div>nemám data</div>;
+    return <div>Tato stránka neobsahuje tento druh dat</div>;
   }
 
-  return data.map((location) => {
-    return (
-      <ListItem
-        key={location.id}
-        point={{
-          id: 0,
-          name: "",
-        }}
-      />
-    );
+  return data.map((point) => {
+    return <ListItem point={point} key={point.id} />;
   });
 };
 

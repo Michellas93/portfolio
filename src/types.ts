@@ -10,6 +10,7 @@ export type LocationType = {
   likes: number;
 };
 export type PointType = {
-  id: number;
+  id: string;
   name: string;
+  description: string;
 };

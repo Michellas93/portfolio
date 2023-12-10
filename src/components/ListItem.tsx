@@ -1,6 +1,3 @@
-// import { getDownloadURL } from "firebase/storage";
-// import { useEffect, useState } from "react";
-// import { getPathReference } from "../firebase/config";
 import { PointType } from "../types";
 import { ButtonLink } from "./ButtonLink";
 import { ROUTES } from "../routes";
@@ -10,21 +7,21 @@ interface Props {
 }
 
 export const ListItem = ({ point }: Props) => {
+  // console.log("🚀 ~ file: ListItem.tsx:13 ~ ListItem ~ location:", location.id);
   // const [imageUrl, setImageUrl] = useState<string>("");
 
   // useEffect(() => {
   //   const getImageUrl = async () => {
-  //     const url = await getDownloadURL(getPathReference(location.imagesrc));
+  //     const url = await getDownloadURL(getPathReference(point.imagesrc));
   //     setImageUrl(url);
   //   };
   //   getImageUrl();
-  // }, [location.imagesrc]);
+  // }, [point.imagesrc]);
   return (
     <div className="flex flex-col text-center">
       <div>{point.name} </div>
-      {/* <img src={imageUrl} alt={`Image of ${location.name}`} /> */}
-
-      <ButtonLink link={ROUTES.point(location.id)}>Více</ButtonLink>
+      {/* <img src={imageUrl} alt={`Image of ${point.name}`} /> */}
+      <ButtonLink link={ROUTES.point(point.id)}>Více</ButtonLink>
     </div>
   );
 };
