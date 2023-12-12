@@ -7,6 +7,7 @@ interface Props {
 }
 
 export const ListItem = ({ point }: Props) => {
+  // NEZAPOMENOUT UPRAVIT!!!
   // console.log("🚀 ~ file: ListItem.tsx:13 ~ ListItem ~ location:", location.id);
   // const [imageUrl, setImageUrl] = useState<string>("");
 

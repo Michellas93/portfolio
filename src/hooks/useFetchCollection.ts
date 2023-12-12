@@ -29,7 +29,7 @@ export const useFetchCollection = <T extends object>(
     const unsubscribe = onSnapshot(
       userRef,
       (snapshot) => {
-        if (!snapshot.empty) {
+        if (snapshot) {
           const result = snapshot.docs.map((item) => {
             return {
               ...item.data(),

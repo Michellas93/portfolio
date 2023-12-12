@@ -34,7 +34,7 @@ export const Point = () => {
   }
 
   if (!documentData) {
-    return <div>Na této webové stránce není tento požadavek dostupný</div>;
+    return <div>Bohužel vámi hledaná lokace se nepodařila nalézt</div>;
   }
 
   return (
