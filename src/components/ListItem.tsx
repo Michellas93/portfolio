@@ -1,31 +1,28 @@
-import { getDownloadURL } from "firebase/storage";
-import { useEffect, useState } from "react";
-import { getPathReference } from "../firebase/config";
-import { LocationType } from "../types";
+import { PointType } from "../types";
+import { ButtonLink } from "./ButtonLink";
+import { ROUTES } from "../routes";
 
 interface Props {
-  location: LocationType;
+  point: PointType;
 }
 
-export const ListItem = ({ location }: Props) => {
-  const [imageUrl, setImageUrl] = useState<string>("");
-  useEffect(() => {
-    const getImageUrl = async () => {
-      const url = await getDownloadURL(getPathReference(location.imagesrc));
-      setImageUrl(url);
-    };
-    getImageUrl();
-  }, [location.imagesrc]);
+export const ListItem = ({ point }: Props) => {
+  // NEZAPOMENOUT UPRAVIT!!!
+  // console.log("🚀 ~ file: ListItem.tsx:13 ~ ListItem ~ location:", location.id);
+  // const [imageUrl, setImageUrl] = useState<string>("");
+
+  // useEffect(() => {
+  //   const getImageUrl = async () => {
+  //     const url = await getDownloadURL(getPathReference(point.imagesrc));
+  //     setImageUrl(url);
+  //   };
+  //   getImageUrl();
+  // }, [point.imagesrc]);
   return (
     <div className="flex flex-col text-center">
-      <div>{location.name} </div>
-      <div> {location.region}</div>
-      <div>{location.distance}</div>
-      <div> {location.types}</div>
-      <div> {location.freeRange}</div>
-      <div> {location.description} </div>
-      <img src={imageUrl} alt="Location" />
-      <div> {location.likes}</div>
+      <div>{point.name} </div>
+      {/* <img src={imageUrl} alt={`Image of ${point.name}`} /> */}
+      <ButtonLink link={ROUTES.point(point.id)}>Více</ButtonLink>
     </div>
   );
 };

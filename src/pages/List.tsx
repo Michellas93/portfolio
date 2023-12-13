@@ -1,23 +1,27 @@
 import { ListItem } from "../components/ListItem";
 import { Section } from "../components/Section";
-import { useFetchData } from "../hooks/useFetchData";
-import { LocationType } from "../types";
+import { useFetchCollection } from "../hooks/useFetchCollection";
+import { PointType } from "../types";
 
 const ListContent = () => {
-  const { data, isLoading, error } = useFetchData<LocationType>("Locations");
+  const { data, isLoading, error } = useFetchCollection<PointType>("point");
   if (isLoading) {
     return <div>Loading...</div>;
   }
   if (error) {
-    return <div>Chyba: {error}</div>;
+    return <div> {error}</div>;
   }
   if (!data) {
-    return <div>nemám data</div>;
+    return <div>Omlouváme se, ale požadovaný obsah není k dispozici.</div>;
   }
 
-  return data.map((location) => {
-    return <ListItem location={location} key={location.id} />;
-  });
+  return (
+    <>
+      {data.map((point) => (
+        <ListItem point={point} key={point.id} />
+      ))}
+    </>
+  );
 };
 
 export const List = () => {

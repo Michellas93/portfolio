@@ -13,14 +13,16 @@ const assignTypes = <T extends object>() => {
   };
 };
 
-export const useFetchData = <T extends object>(collectionName: string) => {
+export const useFetchCollection = <T extends object>(
+  collectionName: string
+) => {
   const [data, setData] = useState<T[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setIsLoading(true);
-    // najit ve firebase document
+
     const userRef = collection(db, collectionName).withConverter(
       assignTypes<T>()
     );
@@ -29,7 +31,10 @@ export const useFetchData = <T extends object>(collectionName: string) => {
       (snapshot) => {
         if (snapshot) {
           const result = snapshot.docs.map((item) => {
-            return item.data();
+            return {
+              ...item.data(),
+              id: item.id,
+            };
           });
           setIsLoading(false);
           setData(result);
@@ -37,12 +42,13 @@ export const useFetchData = <T extends object>(collectionName: string) => {
           setError(null);
         } else {
           setData(null);
-          setError("Žádná nová kniha k vypsání");
+          setError("Záznam není ne webové stránce");
           setIsLoading(false);
         }
       },
       (err) => {
         setError(err.message);
+        setIsLoading(false);
       }
     );
     return () => {
