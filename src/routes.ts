@@ -6,5 +6,6 @@ export const ROUTES = {
   login: () => "/login",
   signup: () => "/signup",
   logout: () => "/logout",
+  pointNew: () => "/point/new",
   point: (id?: string) => `/point/${id ?? ":id"}`,
 };

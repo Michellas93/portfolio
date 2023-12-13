@@ -11,6 +11,7 @@ const NAVBAR_ITEMS = [
   { link: ROUTES.index(), text: "Domů" },
   { link: ROUTES.maps(), text: "Mapy" },
   { link: ROUTES.list(), text: "Seznam" },
+  { link: ROUTES.pointNew(), text: "Přidat" },
   { link: ROUTES.blog(), text: "Blog" },
 ];
 

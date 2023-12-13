@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getCollectionItem } from "../firebase/config";
-import { PointType } from "../types";
+import { getCollectionItem } from "../../firebase/config";
+import { PointType } from "../../types";
 
 export const Point = () => {
   const { id } = useParams();
