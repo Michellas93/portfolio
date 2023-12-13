@@ -6,9 +6,10 @@ import { PointType } from "../types";
 export const Point = () => {
   const { id } = useParams();
   const [documentData, setDocumentData] = useState<PointType | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     const getData = async () => {
       if (id) {
         try {
