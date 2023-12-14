@@ -22,13 +22,11 @@ export const PointNew = () => {
     console.log(
       "🚀 ~ file: PointNew.tsx:22 ~ submitForm ~ formData:",
       formData
-      // jak odeslat data do firebasu
-      //  upravit css
     );
   };
 
   return (
-    <div>
+    <div className="bg-colorLightGreen">
       <h1 className="text-center">Přidat point</h1>
       <PointNewForm selectOptions={selectOptions} onSubmit={submitForm} />
     </div>

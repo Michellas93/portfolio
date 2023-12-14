@@ -26,8 +26,11 @@ const ListContent = () => {
 
 export const List = () => {
   return (
-    <Section title="Seznam" type="light">
-      <ListContent />
+    <Section title="Pejskem Doporučeno" type="light">
+      <div className="flex flex-row flex-wrap justify-center ">
+        <ListContent />
+      </div>
+      <div className="h-[20vh] bg-whiteT"></div>
     </Section>
   );
 };

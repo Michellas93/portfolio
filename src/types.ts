@@ -13,6 +13,7 @@ export type PointType = {
   id: string;
   name: string;
   description: string;
+  imagesrc: string;
 };
 export type DistrictType = {
   name: string;
