@@ -13,7 +13,8 @@ import { Index } from "./pages/Index.tsx";
 import { List } from "./pages/List.tsx";
 import { AuthProvider } from "./firebase/AuthContext.tsx";
 import { AnonymousRoute } from "./pages/AnonymousRoute.tsx";
-import { Point } from "./pages/Point.tsx";
+import { Point } from "./pages/point/Point.tsx";
+import { PointNew } from "./pages/point/PointNew.tsx";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: ROUTES.point(),
         element: <Point />,
+      },
+      {
+        path: ROUTES.pointNew(),
+        element: <PointNew />,
       },
       {
         element: <AnonymousRoute />,

@@ -9,7 +9,6 @@ import { ThirdPartyProviderButtons } from "../form/ThirdPartyProviderButtons";
 type FormData = {
   email: string;
   password: string;
-  data: string;
 };
 export const LogInForm = () => {
   const schema = z.object({
