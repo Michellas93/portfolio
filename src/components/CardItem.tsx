@@ -1,6 +1,3 @@
-import { ButtonLink } from "./ButtonLink";
-import { ROUTES } from "../routes";
-
 interface Props {
   img: string;
   titleCard: string;
