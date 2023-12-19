@@ -1,6 +1,3 @@
-import { ButtonLink } from "./ButtonLink";
-import { ROUTES } from "../routes";
-
 interface Props {
   img: string;
   titleCard: string;
@@ -25,12 +22,6 @@ export const CardItem = ({ img, titleCard, paragrapCard }: Props) => {
 					tuků, sacharidů, vitamínů a minerálů, které odpovídají věku, plemeni,
 					velikosti a úrovni aktivity psa. */}
         </p>
-
-        <div className="flex justify-center pb-5 mt-2  ">
-          <ButtonLink link={ROUTES.blog()} variant="secondary">
-            Více
-          </ButtonLink>
-        </div>
       </div>
     </div>
   );

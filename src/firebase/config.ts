@@ -2,6 +2,7 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import firebase from "firebase/compat/app";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { getStorage, ref } from "firebase/storage";
+// tu budu upravovat kod abzch mohla davat data do firebase
 
 const firebaseConfig = {
   apiKey: "AIzaSyDSjTeLT4bgPtIvKlCwYBHXvoqGoGkoqcc",

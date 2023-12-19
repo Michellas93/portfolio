@@ -21,7 +21,7 @@ export const PointNewForm = ({ selectOptions, onSubmit }: Props) => {
   const schema = z.object({
     name: z.string().min(4).max(25),
     description: z.string().min(5).max(300),
-    // district je nepovinný
+
     district: z.string().optional(),
   });
 
@@ -34,32 +34,34 @@ export const PointNewForm = ({ selectOptions, onSubmit }: Props) => {
   });
 
   return (
-    <form
-      onSubmit={handleSubmit((formData) => onSubmit(formData))}
-      className="flex flex-col items-center p-4 w-full border-2 border-darkGreen bg-whiteT"
-    >
-      <Field
-        label="Název Lokality"
-        error={errors?.name}
-        placeholder="Název lokality"
-        register={register("name")}
-      />
-      <TextAreaField
-        label="Popis lokality"
-        error={errors?.description}
-        register={register("description")}
-      />
-      {/* pokud mi neprijdou select options nezobrazuj select */}
-      {selectOptions && (
-        <Select
-          label="Oblast"
-          options={selectOptions}
-          error={errors?.district}
-          register={register("district")}
+    <div className="flex justify-center items-center h-screen bg-colorLightGreen">
+      <form
+        onSubmit={handleSubmit((formData) => onSubmit(formData))}
+        className="bg-whiteT shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg flex flex-col  "
+      >
+        <Field
+          label="Název Lokality"
+          error={errors?.name}
+          placeholder="Název lokality"
+          register={register("name")}
         />
-      )}
+        <TextAreaField
+          label="Popis lokality"
+          error={errors?.description}
+          register={register("description")}
+        />
 
-      <SubmitButton isLoading={isLoading || isSubmitting} />
-    </form>
+        {selectOptions && (
+          <Select
+            label="Oblast"
+            options={selectOptions}
+            error={errors?.district}
+            register={register("district")}
+          />
+        )}
+
+        <SubmitButton isLoading={isLoading || isSubmitting} />
+      </form>
+    </div>
   );
 };

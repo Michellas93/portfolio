@@ -12,7 +12,6 @@ const NAVBAR_ITEMS = [
   { link: ROUTES.maps(), text: "Mapy" },
   { link: ROUTES.list(), text: "Seznam" },
   { link: ROUTES.pointNew(), text: "Přidat" },
-  { link: ROUTES.blog(), text: "Blog" },
 ];
 
 const Navbar = () => {
@@ -20,7 +19,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="navbar py-2 rounded-xl mt-5 mx-2 bg-darkGreen flex justify-between pl-4 pr-4 ">
+    <nav className="navbar py-2   bg-darkGreen flex justify-between pl-4 pr-4 ">
       <div className="flex items-center ">
         <Logo />
       </div>
