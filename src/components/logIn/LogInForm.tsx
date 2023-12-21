@@ -6,22 +6,20 @@ import { Field } from "../form/Field";
 import { SubmitButton } from "../form/SubmitButton";
 import { ThirdPartyProviderButtons } from "../form/ThirdPartyProviderButtons";
 
-type FormData = {
-  email: string;
-  password: string;
-};
-export const LogInForm = () => {
-  const schema = z.object({
-    email: z.string().email(),
-    password: z.string().min(3).max(20),
-  });
+const LoginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(3).max(20),
+});
 
+type LoginSchemaSchemaType = z.infer<typeof LoginSchema>;
+
+export const LogInForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isLoading, isSubmitting },
-  } = useForm<FormData>({
-    resolver: zodResolver(schema),
+  } = useForm<LoginSchemaSchemaType>({
+    resolver: zodResolver(LoginSchema),
   });
 
   return (

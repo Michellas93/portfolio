@@ -5,6 +5,7 @@ import { PointType } from "../types";
 
 const ListContent = () => {
   const { data, isLoading, error } = useFetchCollection<PointType>("point");
+  // TODO: Pridat filtery
   if (isLoading) {
     return <div>Loading...</div>;
   }
