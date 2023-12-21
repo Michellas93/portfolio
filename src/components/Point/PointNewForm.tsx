@@ -1,84 +1,34 @@
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import { Field } from "../form/Field";
 import { SubmitButton } from "../form/SubmitButton";
 import { TextAreaField } from "../form/TextAreaField";
 import { Select, SelectOption } from "../form/Select";
-import { db, storage } from "../../firebase/config";
-import { collection, addDoc } from "firebase/firestore";
 import {
-  getDownloadURL,
-  ref as storageRef,
-  uploadBytes,
-} from "firebase/storage";
-
-export type PointNewFormData = {
-  im(im: any): unknown;
-  imageUrl(imageUrl: any): unknown;
-  name: string;
-  description: string;
-  district: string;
-};
+  PointNewFormSchemaType,
+  PointNewFormSchema,
+} from "./PointNewFormSchema";
 
 type Props = {
   selectOptions?: SelectOption[];
-  onSubmit: (formData: PointNewFormData) => void;
+  onSubmit: (formData: PointNewFormSchemaType) => void;
 };
 
 export const PointNewForm = ({ selectOptions, onSubmit }: Props) => {
-  const [imageUpload, setImageUpload] = useState(null);
-
-  const schema = z.object({
-    name: z.string().min(4).max(25),
-    description: z.string().min(5).max(300),
-
-    district: z.string().optional(),
-  });
   const {
     register,
     handleSubmit,
-    reset,
+    control,
     formState: { errors, isLoading, isSubmitting },
-  } = useForm<PointNewFormData>({
-    resolver: zodResolver(schema),
+  } = useForm<PointNewFormSchemaType>({
+    resolver: zodResolver(PointNewFormSchema),
   });
-
-  const handleSubmitToFirebase = async (formData: PointNewFormData) => {
-    if (imageUpload === null) {
-      console.log("Prosim vyberte obrazek");
-      return;
-    }
-    // const imageRef = storageRef(storage, `${uuid()}`);
-
-    // uploadBytes(imageRef, imageUpload)
-    //   .then((snapshot) => {
-    //     getDownloadURL(snapshot.ref)
-    //       .then((url) => {
-    //         // todo url dostat do formData
-    //         const docRef = await addDoc(collection(db, "point"), formData);
-    //         console.log("Document written with ID: ", docRef.id);
-    //         onSubmit(formData);
-    //         reset({
-    //           name: "",
-    //           description: "",
-    //           district: "",
-    //         });
-    //       })
-    //       .catch((error) => {
-    //         console.error("Chyba při odesílání dat do Firebase:", error);
-    //       });
-    //   })
-    //   .catch((error) => {
-    //     console.error("Chyba při odesílání dat do Firebase:", error);
-    //   });
-  };
 
   return (
     <div className="flex justify-center items-center h-screen bg-colorLightGreen">
       <form
-        onSubmit={handleSubmit(handleSubmitToFirebase)}
+        onSubmit={handleSubmit(onSubmit)}
         className="bg-whiteT shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg flex flex-col  "
       >
         <Field
@@ -101,16 +51,40 @@ export const PointNewForm = ({ selectOptions, onSubmit }: Props) => {
             register={register("district")}
           />
         )}
-        <label for="imageInput">Pridejte fotku</label>
-        <input
-          type="file"
-          id="imageInput"
-          name="imageInput"
-          accept="image/png,image/jpeg"
-          onChange={(e) => {
-            setImageUpload(e.target?.files[0]);
+
+        {/* TODO : Vytahnout do Separatni komponenty FileInput */}
+        <Controller
+          control={control}
+          name="picture"
+          rules={{ required: "Picture is required" }}
+          render={({ field: { value, onChange, ...field } }) => {
+            return (
+              <>
+                <label className="block text-left">
+                  <span className="block text-sm font-medium text-slate-600">
+                    Fotka
+                  </span>
+                </label>
+
+                <input
+                  {...field}
+                  type="file"
+                  id="picture"
+                  onChange={({ currentTarget }) => {
+                    if (currentTarget?.files?.[0]) {
+                      onChange(currentTarget.files[0]);
+                    }
+                  }}
+                  className="input w-full p-3 rounded mb-1 border border-darkGreen "
+                />
+                {errors?.picture && (
+                  <span className="text-red-500 text-xs">{`${errors?.picture.message}`}</span>
+                )}
+              </>
+            );
           }}
         />
+
         <SubmitButton isLoading={isLoading || isSubmitting} />
       </form>
     </div>

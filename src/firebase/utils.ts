@@ -4,7 +4,9 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { auth, googleProvider } from "./config";
+import { auth, googleProvider, storage } from "./config";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { toast } from "react-toastify";
 
 type UserInputsType = {
   email: string;
@@ -52,5 +54,26 @@ export const signInWithGoogle = async () => {
     await signInWithPopup(auth, googleProvider);
   } catch (error) {
     console.error(error);
+  }
+};
+
+export const uploadImage = async (image: File, name: string) => {
+  try {
+    const imageRef = ref(storage, name);
+    const snapshot = await uploadBytes(imageRef, image);
+    try {
+      const url = await getDownloadURL(snapshot.ref);
+      return url;
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      }
+      return null;
+    }
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      toast.error(error.message);
+    }
+    return null;
   }
 };
