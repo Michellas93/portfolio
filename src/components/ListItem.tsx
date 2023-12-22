@@ -3,7 +3,7 @@ import { ButtonLink } from "./ButtonLink";
 import { ROUTES } from "../routes";
 import { useGetImageUrl } from "../hooks/useGetImageUrl";
 
-import logoSrc from "../assets/logo.png";
+import logoSrc from "../assets/loading.png";
 interface Props {
   point: PointType;
 }
@@ -15,7 +15,7 @@ export const ListItem = ({ point }: Props) => {
     <div className="text-center text-slate-600 m-4  ">
       <div className="bg-colorLightGreen p-4 w-full  shadow-lg border rounded-lg ">
         <div className="text-lg text-slate-600 ">{point.name} </div>
-        <div className="w-52 ">
+        <div className="w-52 h-52">
           {/* TODO: Upravit classy */}
           <img
             className="w-full h-52 object-cover rounded-lg"
