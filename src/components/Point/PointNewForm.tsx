@@ -1,6 +1,5 @@
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import { Field } from "../form/Field";
 import { SubmitButton } from "../form/SubmitButton";
 import { TextAreaField } from "../form/TextAreaField";
@@ -9,6 +8,7 @@ import {
   PointNewFormSchemaType,
   PointNewFormSchema,
 } from "./PointNewFormSchema";
+import FileInput from "../form/FileInput";
 
 type Props = {
   selectOptions?: SelectOption[];
@@ -51,38 +51,11 @@ export const PointNewForm = ({ selectOptions, onSubmit }: Props) => {
             register={register("district")}
           />
         )}
-
-        {/* TODO : Vytahnout do Separatni komponenty FileInput */}
-        <Controller
+        <FileInput
           control={control}
           name="picture"
           rules={{ required: "Picture is required" }}
-          render={({ field: { value, onChange, ...field } }) => {
-            return (
-              <>
-                <label className="block text-left">
-                  <span className="block text-sm font-medium text-slate-600">
-                    Fotka
-                  </span>
-                </label>
-
-                <input
-                  {...field}
-                  type="file"
-                  id="picture"
-                  onChange={({ currentTarget }) => {
-                    if (currentTarget?.files?.[0]) {
-                      onChange(currentTarget.files[0]);
-                    }
-                  }}
-                  className="input w-full p-3 rounded mb-1 border border-darkGreen "
-                />
-                {errors?.picture && (
-                  <span className="text-red-500 text-xs">{`${errors?.picture.message}`}</span>
-                )}
-              </>
-            );
-          }}
+          error={errors.picture}
         />
 
         <SubmitButton isLoading={isLoading || isSubmitting} />
