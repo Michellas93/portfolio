@@ -1,6 +1,5 @@
 import { FieldError, UseFormRegisterReturn } from "react-hook-form";
 
-// udelala jsem si tu props SelectOptions a dala jsem export protoze to budu potrebovat jeste jinde. tohle je objekt
 export type SelectOption = {
   value: string | number;
   label: string;
@@ -10,7 +9,6 @@ type Props = {
   error: FieldError | undefined;
   label?: string;
   register: UseFormRegisterReturn;
-  //   tady mám options které mají pole objektů a takto se to zapisuje ve TS.
   options: SelectOption[];
 } & React.SelectHTMLAttributes<HTMLSelectElement>;
 
@@ -18,7 +16,6 @@ export const Select = ({
   error,
   label,
   register,
-  //   options jsem tu doplnila a to my bere celou informaci pole objektu
   options,
   ...props
 }: Props) => {
@@ -37,7 +34,6 @@ export const Select = ({
         {...props}
         {...register}
       >
-        {/*mám pole objektů, požiju map, chci aby se mi neco selektovalo  */}
         {options.map((item) => (
           <option key={item.value} value={item.value}>
             {item.label}

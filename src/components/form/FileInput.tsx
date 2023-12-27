@@ -1,10 +1,10 @@
-import { Controller } from "react-hook-form";
+import { Control, Controller, FieldError, FieldValues } from "react-hook-form";
 
 interface FileInputProps {
-  control: any;
+  control: Control<FieldValues>;
   name: string;
   rules: object;
-  error: any;
+  error: FieldError;
 }
 
 const FileInput = ({ control, name, rules, error }: FileInputProps) => {

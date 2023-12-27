@@ -10,6 +10,7 @@ export type LocationType = {
   likes: number;
 };
 export type PointType = {
+  filter(arg0: (item: any) => boolean): unknown;
   id: string;
   name: string;
   description: string;

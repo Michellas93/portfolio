@@ -18,7 +18,11 @@ const MapSection = () => {
             Loukami“ bude venčení vašeho čtyřnohého přítele vždy zábavný a
             bezpečný zážitek!
           </p>
-          <img className="w-1/3 rounded-md" src={mapUrl} alt="Map section" />
+          <img
+            className="w-1/3 rounded-md transition-transform duration-300 hover:scale-110"
+            src={mapUrl}
+            alt="Map section"
+          />
         </div>
         <div className="flex justify-center pb-5 ">
           <ButtonLink link={ROUTES.maps()} variant="secondary">

@@ -57,7 +57,9 @@ export const PointNew = () => {
 
   return (
     <div className="bg-colorLightGreen">
-      <h1 className="text-center">Přidat point</h1>
+      <h1 className="text-center text-5xl text-slate-600 pt-10">
+        Přidat point
+      </h1>
       <PointNewForm selectOptions={selectOptions} onSubmit={submitForm} />
     </div>
   );
