@@ -16,12 +16,7 @@ export const CardItem = ({ img, titleCard, paragrapCard }: Props) => {
           />
         </div>
         <h3 className=" text-lg text-colorLightGreen">{titleCard}</h3>
-        <p className=" text-sm line-clamp-3  text-slate-600">
-          {paragrapCard}
-          {/* Strava Kvalitní psí krmivo by mělo obsahovat vyvážený poměr bílkovin,
-					tuků, sacharidů, vitamínů a minerálů, které odpovídají věku, plemeni,
-					velikosti a úrovni aktivity psa. */}
-        </p>
+        <p className=" text-sm line-clamp-3  text-slate-600">{paragrapCard}</p>
       </div>
     </div>
   );

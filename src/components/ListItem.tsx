@@ -2,8 +2,8 @@ import { PointType } from "../types";
 import { ButtonLink } from "./ButtonLink";
 import { ROUTES } from "../routes";
 import { useGetImageUrl } from "../hooks/useGetImageUrl";
-
 import logoSrc from "../assets/loading.png";
+
 interface Props {
   point: PointType;
 }
@@ -12,7 +12,7 @@ export const ListItem = ({ point }: Props) => {
   const { imageUrl, isImageLoading } = useGetImageUrl(point.imagesrc);
 
   return (
-    <div className="text-center text-slate-600 m-4  ">
+    <div className="text-center text-slate-600 m-4 transition-transform duration-300 hover:scale-110 ">
       <div className="bg-colorLightGreen p-4 w-full  shadow-lg border rounded-lg ">
         <div className="text-lg text-slate-600 ">{point.name} </div>
         <div className="w-52 h-52">

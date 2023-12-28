@@ -15,7 +15,11 @@ const AboutSection = () => {
           tipy na nejlepší místa pro naše čtyřnohé přátele.
         </p>
 
-        <img className="w-1/4 rounded-md mb-6" src={ary} alt="arya" />
+        <img
+          className="w-1/4 rounded-md mb-6 transition-transform duration-300 hover:scale-110"
+          src={ary}
+          alt="arya"
+        />
       </div>
     </Section>
   );
