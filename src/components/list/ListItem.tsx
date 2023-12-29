@@ -24,7 +24,7 @@ export const ListItem = ({ imagesrc, name, id, likes }: PointType) => {
           <ButtonLink link={ROUTES.point(id)} variant="secondary">
             Více
           </ButtonLink>
-          <LikeButton likes={likes} docId={id} collectionName="point" />/
+          <LikeButton likes={likes} docId={id} collectionName="point" />
         </div>
       </div>
     </div>
