@@ -6,12 +6,13 @@ import { useState } from "react";
 import { useAuth } from "../firebase/AuthContext";
 import { Button } from "./Button";
 import { logOut } from "../firebase/utils";
+import { MenuIcon } from "./MenuIcon";
 
 const NAVBAR_ITEMS = [
   { link: ROUTES.index(), text: "Domů" },
   { link: ROUTES.maps(), text: "Mapy" },
   { link: ROUTES.list(), text: "Seznam" },
-  { link: ROUTES.pointNew(), text: "Přidat" },
+  { link: ROUTES.pointNew(), text: "Přidat", protected: true },
 ];
 
 const Navbar = () => {
@@ -24,23 +25,13 @@ const Navbar = () => {
         <Logo />
       </div>
       <div className="flex items-center">
-        <button
-          className="md:hidden  flex"
+        <Button
+          className="md:hidden"
+          variant="tertiary"
           onClick={() => setIsMenuOpen((prevState) => !prevState)}
         >
-          <svg
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="menu w-12 h-12  "
-          >
-            <path
-              fillRule="evenodd"
-              d="M4 5h16M4 10h16M4 15h16"
-              stroke="#fff"
-              strokeWidth="3"
-            />
-          </svg>
-        </button>
+          <MenuIcon />
+        </Button>
       </div>
 
       <div
@@ -49,22 +40,24 @@ const Navbar = () => {
         } flex-col w-full md:w-auto md:flex md:flex-row md:items-center  self-center  `}
       >
         <ul className="flex bg-darkGreen flex-col self-center md:flex-row md:items-center ">
-          {NAVBAR_ITEMS.map((item) => (
-            <li
-              className="px-4 pt-2 hover:font-extrabold text-white"
-              key={item.text}
-            >
-              <NavLink
-                to={item.link}
-                onClick={() => setIsMenuOpen(false)}
-                className={({ isActive, isPending }) =>
-                  isActive ? "underline" : isPending ? "pending" : ""
-                }
+          {NAVBAR_ITEMS.filter((item) => (!item.protected ? true : !!user)).map(
+            (item) => (
+              <li
+                className="px-4 pt-2 hover:font-extrabold text-white"
+                key={item.text}
               >
-                {item.text}
-              </NavLink>
-            </li>
-          ))}
+                <NavLink
+                  to={item.link}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={({ isActive, isPending }) =>
+                    isActive ? "underline" : isPending ? "pending" : ""
+                  }
+                >
+                  {item.text}
+                </NavLink>
+              </li>
+            )
+          )}
         </ul>
       </div>
       <div className="flex flex-col md:flex-row md:items-center sm:flex-row sm:justify-end  ">

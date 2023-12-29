@@ -9,8 +9,8 @@ import { ThirdPartyProviderButtons } from "../form/ThirdPartyProviderButtons";
 const SignUpSchema = z
   .object({
     email: z.string().email(),
-    password: z.string().min(3).max(20),
-    confirm: z.string().min(3).max(20),
+    password: z.string().min(6).max(30),
+    confirm: z.string(),
   })
   .refine(
     (data) => {
