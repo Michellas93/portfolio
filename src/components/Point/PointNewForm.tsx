@@ -11,11 +11,16 @@ import {
 import FileInput from "../form/FileInput";
 
 type Props = {
-  selectOptions?: SelectOption[];
+  districtOptions?: SelectOption[];
+  typeOptions: SelectOption[];
   onSubmit: (formData: PointNewFormSchemaType) => void;
 };
 
-export const PointNewForm = ({ selectOptions, onSubmit }: Props) => {
+export const PointNewForm = ({
+  typeOptions,
+  districtOptions,
+  onSubmit,
+}: Props) => {
   const {
     register,
     handleSubmit,
@@ -43,14 +48,20 @@ export const PointNewForm = ({ selectOptions, onSubmit }: Props) => {
           register={register("description")}
         />
 
-        {selectOptions && (
+        {districtOptions && (
           <Select
             label="Oblast"
-            options={selectOptions}
+            options={districtOptions}
             error={errors?.district}
             register={register("district")}
           />
         )}
+        <Select
+          label="typ"
+          error={errors?.type}
+          register={register("type")}
+          options={typeOptions}
+        />
         <FileInput
           control={control}
           name="picture"

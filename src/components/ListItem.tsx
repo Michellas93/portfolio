@@ -24,6 +24,7 @@ export const ListItem = ({ point }: Props) => {
           />
         </div>
         <div className="flex justify-center pt-1">
+          {true ? <button>like</button> : <button> dont like</button>}
           <ButtonLink link={ROUTES.point(point.id)} variant="secondary">
             Více
           </ButtonLink>
