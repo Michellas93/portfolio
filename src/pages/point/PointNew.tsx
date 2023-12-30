@@ -4,16 +4,18 @@ import { toast } from "react-toastify";
 import { PointNewForm } from "../../components/Point/PointNewForm";
 import { useFetchCollection } from "../../hooks/useFetchCollection";
 import { DistrictType } from "../../types";
-import { db } from "../../firebase/config";
+import { db, getCollection } from "../../firebase/config";
 import { PointNewFormSchemaType } from "../../components/Point/PointNewFormSchema";
 import { addDoc, collection } from "firebase/firestore";
 import { uploadImage } from "../../firebase/utils";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../routes";
+import { POINT_TYPE_OPTIONS } from "../../constants";
 
 export const PointNew = () => {
-  const { data, isLoading, error } =
-    useFetchCollection<DistrictType>("district");
+  const { data, isLoading, error } = useFetchCollection<DistrictType>(
+    getCollection("district")
+  );
   const navigate = useNavigate();
 
   if (isLoading) {
@@ -60,7 +62,11 @@ export const PointNew = () => {
       <h1 className="text-center text-5xl text-slate-600 pt-10">
         Přidat point
       </h1>
-      <PointNewForm selectOptions={selectOptions} onSubmit={submitForm} />
+      <PointNewForm
+        districtOptions={selectOptions}
+        typeOptions={POINT_TYPE_OPTIONS}
+        onSubmit={submitForm}
+      />
     </div>
   );
 };

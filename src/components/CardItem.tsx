@@ -10,7 +10,7 @@ export const CardItem = ({ img, titleCard, paragrapCard }: Props) => {
       <div className="text-center w-60 shadow  ">
         <div className="ml-2 mr-2">
           <img
-            className=" w-60   object-cover h-52 rounded-md"
+            className="w-60 object-cover h-52 rounded-md"
             src={img}
             alt="granule"
           />

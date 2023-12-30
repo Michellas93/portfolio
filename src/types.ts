@@ -9,6 +9,7 @@ export type LocationType = {
   imagesrc: string;
   likes: number;
 };
+
 export enum PointTypeOption {
   park = "park",
   forest = "forest",
@@ -21,6 +22,7 @@ export type PointType = {
   description: string;
   imagesrc: string;
   type: PointTypeOption;
+  likes: string[];
 };
 
 export type DistrictType = {
