@@ -13,7 +13,7 @@ export const Heart = ({
     style={{
       cursor: "pointer",
       fill: isActive ? "red" : "transparent",
-      stroke: isActive ? "red" : "black",
+      stroke: isActive ? "red" : "white",
       strokeWidth: "1px",
     }}
   >

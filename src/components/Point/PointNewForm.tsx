@@ -31,7 +31,7 @@ export const PointNewForm = ({
   });
 
   return (
-    <div className="flex justify-center items-center h-screen bg-colorLightGreen">
+    <div className="flex justify-center items-center h-screen  bg-gradient-to-r from-darkGreen to-colorLightGreen ">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-whiteT shadow-md rounded px-8 pt-6 pb-8 mb-8 w-full max-w-lg flex flex-col  "

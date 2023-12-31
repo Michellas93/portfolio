@@ -37,7 +37,7 @@ const Navbar = () => {
       <div
         className={`${
           isMenuOpen ? "flex" : "hidden"
-        } flex-col w-full md:w-auto md:flex md:flex-row md:items-center  self-center  `}
+        }  md:justify-end  md:w-auto md:flex md:flex-col md:items-center  flex-col `}
       >
         <ul className="flex bg-darkGreen flex-col self-center md:flex-row md:items-center ">
           {NAVBAR_ITEMS.filter((item) => (!item.protected ? true : !!user)).map(

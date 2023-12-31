@@ -3,13 +3,13 @@ import Navbar from "../components/Navbar";
 
 export const Root = () => {
   return (
-    <div className="flex flex-col min-h-screen justify-between ">
+    <div className="flex flex-col min-h-screen justify-between  ">
       <Navbar />
 
-      <div id="detail" className="flex-grow">
+      <div id="detail" className="flex-grow ">
         <Outlet />
       </div>
-      <footer className="text-center bg-darkGreen sticky bottom-0">
+      <footer className="text-center bg-darkGreen sticky ">
         Copyright &copy; Michaela Šimková 2023
       </footer>
     </div>

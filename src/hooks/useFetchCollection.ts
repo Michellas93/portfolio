@@ -21,6 +21,7 @@ export const useFetchCollection = <T extends object>(query: Query) => {
     setIsLoading(true);
 
     const userRef = query.withConverter(assignTypes<T>());
+
     const unsubscribe = onSnapshot(
       userRef,
       (snapshot) => {
