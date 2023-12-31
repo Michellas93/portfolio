@@ -13,9 +13,8 @@ import { ROUTES } from "../../routes";
 import { POINT_TYPE_OPTIONS } from "../../constants";
 
 export const PointNew = () => {
-  const { data, isLoading, error } = useFetchQuery<DistrictType>(
-    getCollection("district")
-  );
+  const res = useFetchQuery<DistrictType>(getCollection("district"));
+  const { data, isLoading, error } = res;
   const navigate = useNavigate();
 
   if (isLoading) {

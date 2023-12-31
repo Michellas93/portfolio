@@ -5,17 +5,12 @@ import { useGetImageUrl } from "../../hooks/useGetImageUrl";
 import { Spinner } from "../../components/Spinner";
 import { ButtonLink } from "../../components/ButtonLink";
 import { LikeButton } from "../../components/LikeButton";
-
 import { useFetchDocument } from "../../hooks/useFetchDocument";
 
 export const Point = () => {
   const { id } = useParams();
-
-  const { isLoading, data, error } = useFetchDocument<PointType>(
-    "point",
-    id ?? ""
-  );
-
+  const res = useFetchDocument<PointType>("point", id ?? "");
+  const { data, isLoading, error } = res;
   const { imageUrl, isImageLoading } = useGetImageUrl(data?.imagesrc);
 
   if (isLoading) {
