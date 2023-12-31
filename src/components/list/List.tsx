@@ -1,19 +1,20 @@
 import { getCollection } from "../../firebase/config";
-import { useFetchCollection } from "../../hooks/useFetchCollection";
+import { useFetchQuery } from "../../hooks/useFetchQuery";
 import { PointType } from "../../types";
 import { ListItem } from "./ListItem";
 
 export const List = () => {
-  const { data, isLoading, error } = useFetchCollection<PointType>(
-    getCollection("point")
-  );
-  // TODO: Pridat filtery
+  const res = useFetchQuery<PointType>(getCollection("point"));
+  const { data, isLoading, error } = res;
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
   if (error) {
     return <div> {error}</div>;
   }
+
   if (!data || data.length === 0) {
     return (
       <div>
