@@ -1,23 +1,22 @@
 import { useParams } from "react-router-dom";
-import { getCollection } from "../../firebase/config";
 import { PointType } from "../../types";
 import { ROUTES } from "../../routes";
 import { useGetImageUrl } from "../../hooks/useGetImageUrl";
 import { Spinner } from "../../components/Spinner";
 import { ButtonLink } from "../../components/ButtonLink";
 import { LikeButton } from "../../components/LikeButton";
-import { useFetchCollection } from "../../hooks/useFetchCollection";
-import { query, where } from "firebase/firestore";
+
+import { useFetchDocument } from "../../hooks/useFetchDocument";
 
 export const Point = () => {
   const { id } = useParams();
 
-  const { isLoading, data, error } = useFetchCollection<PointType>(
-    query(getCollection("point"), where("name", "==", "Test"))
+  const { isLoading, data, error } = useFetchDocument<PointType>(
+    "point",
+    id ?? ""
   );
-  const pointData = data?.[0];
 
-  const { imageUrl, isImageLoading } = useGetImageUrl(pointData?.imagesrc);
+  const { imageUrl, isImageLoading } = useGetImageUrl(data?.imagesrc);
 
   if (isLoading) {
     return <div>Načítám data...</div>;
@@ -27,7 +26,7 @@ export const Point = () => {
     return <div> {error}</div>;
   }
 
-  if (!pointData || !id) {
+  if (!data || !id) {
     return <div>Bohužel vámi hledaná lokace se nepodařila nalézt</div>;
   }
 
@@ -46,24 +45,20 @@ export const Point = () => {
             <img
               className="w-full h-full md:w-1/2 md:w-96 md:h-96 object-contain p-4"
               src={imageUrl}
-              alt={`Preview of ${pointData.name}`}
+              alt={`Preview of ${data.name}`}
             />
           )}
         </div>
 
         <div className="flex flex-col items-center justify-start pt-14">
-          <h1 className="text-2xl font-bold mb-4 text-left">
-            {pointData.name}
-          </h1>
+          <h1 className="text-2xl font-bold mb-4 text-left">{data.name}</h1>
           <LikeButton
-            likes={pointData.likes}
+            likes={data.likes}
             collectionName="point"
             docId={id}
             classNames="ml-6"
           />
-          <p className="mt-4 text-center md:text-left">
-            {pointData.description}
-          </p>
+          <p className="mt-4 text-center md:text-left">{data.description}</p>
         </div>
       </div>
     </div>
