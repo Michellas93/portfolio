@@ -1,6 +1,6 @@
 import { SetStateAction, useState } from "react";
 import { getCollection } from "../../firebase/config";
-import { useFetchCollection } from "../../hooks/useFetchCollection";
+import { useFetchQuery } from "../../hooks/useFetchQuery";
 import { PointType } from "../../types";
 import { ListItem } from "./ListItem";
 import { query, where } from "firebase/firestore";
@@ -35,9 +35,11 @@ export const List = () => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
   if (error) {
     return <div> {error}</div>;
   }
+
   if (!data || data.length === 0) {
     return (
       <div>

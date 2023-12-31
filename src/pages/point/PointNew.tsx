@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 import { toast } from "react-toastify";
 import { PointNewForm } from "../../components/Point/PointNewForm";
-import { useFetchCollection } from "../../hooks/useFetchCollection";
+import { useFetchQuery } from "../../hooks/useFetchQuery";
 import { DistrictType } from "../../types";
 import { db, getCollection } from "../../firebase/config";
 import { PointNewFormSchemaType } from "../../components/Point/PointNewFormSchema";
@@ -12,9 +12,8 @@ import { ROUTES } from "../../routes";
 import { POINT_TYPE_OPTIONS } from "../../constants";
 
 export const PointNew = () => {
-  const { data, isLoading, error } = useFetchCollection<DistrictType>(
-    getCollection("district")
-  );
+  const res = useFetchQuery<DistrictType>(getCollection("district"));
+  const { data, isLoading, error } = res;
   const navigate = useNavigate();
 
   if (isLoading) {
