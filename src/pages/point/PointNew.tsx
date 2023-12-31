@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { PointNewForm } from "../../components/Point/PointNewForm";
 import { useFetchQuery } from "../../hooks/useFetchQuery";
 import { DistrictType } from "../../types";
-import { db, getCollection } from "../../firebase/config";
+import { db } from "../../firebase/config";
 import { PointNewFormSchemaType } from "../../components/Point/PointNewFormSchema";
 import { addDoc, collection } from "firebase/firestore";
 import { uploadImage } from "../../firebase/utils";
@@ -12,7 +12,7 @@ import { ROUTES } from "../../routes";
 import { POINT_TYPE_OPTIONS } from "../../constants";
 
 export const PointNew = () => {
-  const res = useFetchQuery<DistrictType>(getCollection("district"));
+  const res = useFetchQuery<DistrictType>("district");
   const { data, isLoading, error } = res;
   const navigate = useNavigate();
 

@@ -1,15 +1,37 @@
 import { useEffect, useState } from "react";
-import { Query, onSnapshot } from "firebase/firestore";
+import { WhereFilterOp, onSnapshot, query, where } from "firebase/firestore";
 import { assignTypes } from "./assignTypes";
+import { getCollection } from "../firebase/config";
 
-export const useFetchQuery = <T extends object>(query: Query) => {
+export type FilterItemType = {
+  key: string;
+  operator: WhereFilterOp;
+  value: string;
+};
+
+const getQuery = (collectionName: string, filter?: FilterItemType) => {
+  return !filter || filter?.value === "all"
+    ? query(getCollection(collectionName))
+    : query(
+        getCollection(collectionName),
+        where(filter.key, filter.operator, filter.value)
+      );
+};
+
+export const useFetchQuery = <T extends object>(
+  collectionName: string,
+  filter?: FilterItemType
+) => {
   const [data, setData] = useState<Array<T> | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const queryRef = getQuery(collectionName, filter).withConverter(
+    assignTypes<T>()
+  );
+
   useEffect(() => {
     setIsLoading(true);
-    const queryRef = query.withConverter(assignTypes<T>());
     const unsubscribe = onSnapshot(
       queryRef,
       (querySnapshot) => {
@@ -18,6 +40,7 @@ export const useFetchQuery = <T extends object>(query: Query) => {
             ...doc.data(),
             id: doc.id,
           }));
+
           setData(result);
           setIsLoading(false);
         } else {
@@ -36,7 +59,7 @@ export const useFetchQuery = <T extends object>(query: Query) => {
       unsubscribe();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [filter]);
 
   return {
     data,

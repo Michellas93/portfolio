@@ -1,37 +1,30 @@
-import { SetStateAction, useState } from "react";
-import { getCollection } from "../../firebase/config";
-import { useFetchQuery } from "../../hooks/useFetchQuery";
+import { SetStateAction, useMemo, useState } from "react";
+import { FilterItemType, useFetchQuery } from "../../hooks/useFetchQuery";
 import { PointType } from "../../types";
 import { ListItem } from "./ListItem";
-import { query, where } from "firebase/firestore";
-
-// type Props = {
-//   typeOptions: SelectOption[];
-// };
 
 export const List = () => {
-  // const {
-  //   register,
-  //   formState: { errors },
-  // } = useForm<PointNewFormSchemaType>({
-  //   resolver: zodResolver(PointNewFormSchema),
-  // });
-
-  const { data, isLoading, error } = useFetchCollection<PointType>(
-    query(getCollection("point"), where("type", "in", ["louka", "les", "park"]))
-  );
   const [filter, setFilter] = useState("all");
-  const filteredData = data?.filter((point) => {
-    if (filter === "all") return true;
+  const filterItem: FilterItemType = useMemo(
+    () => ({
+      operator: "==",
+      value: filter,
+      key: "type",
+    }),
+    [filter]
+  );
 
-    return point.type === filter;
-  });
+  const { data, isLoading, error } = useFetchQuery<PointType>(
+    "point",
+    filterItem
+  );
+
   const handleFilterChange = (e: {
     target: { value: SetStateAction<string> };
   }) => {
     setFilter(e.target.value);
   };
-  // TODO: Pridat filtery
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -63,7 +56,7 @@ export const List = () => {
           <option value="louka">Louka</option>
         </select>
         <div className="flex flex-row flex-wrap m-2  justify-center ">
-          {filteredData.map((point) => (
+          {data.map((point) => (
             <div className="p-2" key={point.id}>
               <div className="transition-transform duration-300 hover:scale-110  ">
                 <ListItem {...point} key={point.id} />
