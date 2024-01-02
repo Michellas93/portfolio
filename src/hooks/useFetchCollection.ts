@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { DocumentData, Query, onSnapshot } from "firebase/firestore";
+import { db } from "../firebase/config";
+import { DocumentData, collection, onSnapshot } from "firebase/firestore";
 
 const assignTypes = <T extends object>() => {
   return {
@@ -12,7 +13,9 @@ const assignTypes = <T extends object>() => {
   };
 };
 
-export const useFetchCollection = <T extends object>(query: Query) => {
+export const useFetchCollection = <T extends object>(
+  collectionName: string
+) => {
   const [data, setData] = useState<T[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -20,8 +23,9 @@ export const useFetchCollection = <T extends object>(query: Query) => {
   useEffect(() => {
     setIsLoading(true);
 
-    const userRef = query.withConverter(assignTypes<T>());
-
+    const userRef = collection(db, collectionName).withConverter(
+      assignTypes<T>()
+    );
     const unsubscribe = onSnapshot(
       userRef,
       (snapshot) => {
@@ -50,8 +54,7 @@ export const useFetchCollection = <T extends object>(query: Query) => {
     return () => {
       unsubscribe();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [collectionName]);
   return {
     data,
     isLoading,

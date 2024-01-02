@@ -17,7 +17,7 @@ import { AuthProvider } from "./firebase/AuthContext.tsx";
 import { AnonymousRoute } from "./pages/AnonymousRoute.tsx";
 import { Point } from "./pages/point/Point.tsx";
 import { PointNew } from "./pages/point/PointNew.tsx";
-import { LoggedInRoute } from "./pages/LoggedInRoute.tsx";
+import { AdminRoute } from "./pages/AdminRoute.tsx";
 
 const router = createBrowserRouter([
   {
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: ROUTES.pointNew(),
-        element: <LoggedInRoute />,
+        element: <AdminRoute />,
         children: [
           {
             index: true,

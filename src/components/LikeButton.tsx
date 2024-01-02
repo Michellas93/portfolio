@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, MouseEvent } from "react";
 import cs from "classnames";
 import "tailwindcss/tailwind.css";
 import { getDocumentReference } from "../firebase/config";
@@ -56,7 +56,8 @@ export const LikeButton = ({
     }
   };
 
-  const handleLike = () => {
+  const handleLike = (event: MouseEvent<any>) => {
+    event.stopPropagation();
     if (!userUid) {
       return toast.error(LOGIN_ERROR_MSG);
     }
