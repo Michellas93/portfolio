@@ -1,10 +1,9 @@
 import { v4 as uuid } from "uuid";
 import { toast } from "react-toastify";
-
 import { PointNewForm } from "../../components/Point/PointNewForm";
 import { useFetchQuery } from "../../hooks/useFetchQuery";
 import { DistrictType } from "../../types";
-import { db, getCollection } from "../../firebase/config";
+import { db } from "../../firebase/config";
 import { PointNewFormSchemaType } from "../../components/Point/PointNewFormSchema";
 import { addDoc, collection } from "firebase/firestore";
 import { uploadImage } from "../../firebase/utils";
@@ -13,7 +12,7 @@ import { ROUTES } from "../../routes";
 import { POINT_TYPE_OPTIONS } from "../../constants";
 
 export const PointNew = () => {
-  const res = useFetchQuery<DistrictType>(getCollection("district"));
+  const res = useFetchQuery<DistrictType>("district");
   const { data, isLoading, error } = res;
   const navigate = useNavigate();
 
@@ -25,7 +24,7 @@ export const PointNew = () => {
     return <div> {error}</div>;
   }
 
-  const selectOptions = data?.map((item) => ({
+  const districtOptions = data?.map((item) => ({
     value: item.id,
     label: item.name,
   }));
@@ -57,14 +56,12 @@ export const PointNew = () => {
   };
 
   return (
-    <div className="bg-colorLightGreen">
-      <h1 className="text-center text-5xl text-slate-600 pt-10">
-        Přidat point
-      </h1>
+    <div className="  bg-gradient-to-r from-darkGreen to-colorLightGreen  ">
+      <h1 className="text-center text-5xl text-white pt-10">Přidat point</h1>
       <PointNewForm
-        districtOptions={selectOptions}
-        typeOptions={POINT_TYPE_OPTIONS}
+        districtOptions={districtOptions}
         onSubmit={submitForm}
+        typeOptions={POINT_TYPE_OPTIONS}
       />
     </div>
   );

@@ -7,6 +7,7 @@ import { useAuth } from "../firebase/AuthContext";
 import { Button } from "./Button";
 import { logOut } from "../firebase/utils";
 import { MenuIcon } from "./MenuIcon";
+import { isAdmin } from "../pages/AdminRoute";
 
 const NAVBAR_ITEMS = [
   { link: ROUTES.index(), text: "Domů" },
@@ -24,6 +25,7 @@ const Navbar = () => {
       <div className="flex items-center ">
         <Logo />
       </div>
+
       <div className="flex items-center">
         <Button
           className="md:hidden"
@@ -33,31 +35,30 @@ const Navbar = () => {
           <MenuIcon />
         </Button>
       </div>
-
       <div
         className={`${
           isMenuOpen ? "flex" : "hidden"
-        } flex-col w-full md:w-auto md:flex md:flex-row md:items-center  self-center  `}
+        }  md:justify-end  md:w-auto md:flex md:flex-col md:items-center  flex-col `}
       >
         <ul className="flex bg-darkGreen flex-col self-center md:flex-row md:items-center ">
-          {NAVBAR_ITEMS.filter((item) => (!item.protected ? true : !!user)).map(
-            (item) => (
-              <li
-                className="px-4 pt-2 hover:font-extrabold text-white"
-                key={item.text}
+          {NAVBAR_ITEMS.filter((item) =>
+            !item.protected ? true : isAdmin(user)
+          ).map((item) => (
+            <li
+              className="px-4 pt-2 hover:font-extrabold text-white"
+              key={item.text}
+            >
+              <NavLink
+                to={item.link}
+                onClick={() => setIsMenuOpen(false)}
+                className={({ isActive, isPending }) =>
+                  isActive ? "underline" : isPending ? "pending" : ""
+                }
               >
-                <NavLink
-                  to={item.link}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={({ isActive, isPending }) =>
-                    isActive ? "underline" : isPending ? "pending" : ""
-                  }
-                >
-                  {item.text}
-                </NavLink>
-              </li>
-            )
-          )}
+                {item.text}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </div>
       <div className="flex flex-col md:flex-row md:items-center sm:flex-row sm:justify-end  ">

@@ -5,10 +5,10 @@ import { ROUTES } from "../../routes";
 
 const MapSection = () => {
   return (
-    <div>
-      <Section title="Mapy" type="dark">
-        <div className="flex items-center space-x-2.5 ml-8 mr-8 ">
-          <p className="px-1 leading-7  text-slate-600">
+    <div className="bg-gradient-to-r from-darkGreen to-colorLightGreen shadow-md  flex items-center  p-6">
+      <Section title="Mapy" type="light">
+        <div className="flex flex-col items-center md:items-start md:flex-row   ">
+          <p className="px-1 leading-7  text-slate-600 font-sans text-lg mt-2  m-4">
             Hledáte ideální místo pro venčení vašeho čtyřnohého přítele v Praze?
             Máme pro vás skvělou zprávu! Představujeme „Pet Heart“. Najdete zde
             interaktivní mapu, která vám ukáže všechna doporučená místa pro
@@ -19,12 +19,12 @@ const MapSection = () => {
             bezpečný zážitek!
           </p>
           <img
-            className="w-1/3 rounded-md transition-transform duration-300 hover:scale-110"
+            className=" mr-4 rounded-md shadow-lg w-1/3 transition-transform duration-300 hover:scale-110"
             src={mapUrl}
             alt="Map section"
           />
         </div>
-        <div className="flex justify-center pb-5 ">
+        <div className="flex justify-center pb-5  ">
           <ButtonLink link={ROUTES.maps()} variant="secondary">
             Více
           </ButtonLink>
