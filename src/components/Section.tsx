@@ -9,15 +9,15 @@ interface Props extends PropsWithChildren {
 
 export const Section = ({ title, type, children }: Props) => {
   const isLight = type === "light";
-  const green = type === "green";
-  const dark = type === "dark";
+  const isGreen = type === "green";
+  const isDark = type === "dark";
 
   return (
     <div
       className={cs("", {
         "bg-whiteT": isLight,
-        "bg-gradient-to-r from-darkGreen to-colorLightGreen": green,
-        "bd-darkBrown": dark,
+        "bg-gradient-to-r from-darkGreen to-colorLightGreen": isGreen,
+        "bd-darkBrown": isDark,
       })}
     >
       <Title title={title} />
