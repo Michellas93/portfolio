@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import NavigationBar from "../components/NavigationBar";
 
 export const Root = () => {
   return (
     <div className="flex flex-col min-h-screen justify-between">
-      <Navbar />
+      <NavigationBar />
 
       <div id="detail" className="flex-grow">
         <Outlet />
