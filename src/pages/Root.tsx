@@ -1,14 +1,14 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import { Navbar } from "../components/navbar/Navbar";
 
 export const Root = () => {
   return (
     <div className="flex flex-col min-h-screen justify-between">
       <Navbar />
 
-      <div id="detail" className="flex-grow">
+      <main className="flex-grow">
         <Outlet />
-      </div>
+      </main>
       <footer className="text-center bg-darkGreen sticky">
         Copyright &copy; Michaela Šimková 2023
       </footer>
