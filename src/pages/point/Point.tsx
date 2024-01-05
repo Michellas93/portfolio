@@ -27,7 +27,7 @@ export const Point = () => {
 
   return (
     <div className="flex flex-col h-screen bg-gray-100">
-      <div className="flex flex-col h-screenflex items-center  bg-gradient-to-r from-darkGreen to-colorLightGreen shadow-md p-6 text-white">
+      <div className="flex flex-col h-screen items-center  bg-gradient-to-r from-darkGreen to-colorLightGreen shadow-md p-6 text-white">
         <div className="m-4 flex-row">
           <ButtonLink link={ROUTES.list()} variant="secondary">
             Zpět

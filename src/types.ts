@@ -23,6 +23,8 @@ export type PointType = {
   imagesrc: string;
   type: PointTypeOption;
   likes: string[];
+  map: number[];
+  district: string;
 };
 
 export type DistrictType = {

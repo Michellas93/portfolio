@@ -1,81 +1,70 @@
-import { Section } from "../components/Section";
-import maps from "../assets/web-3120321_1280.png";
+import { PointType } from "../types";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { ROUTES } from "../routes";
+import { useFetchQuery } from "../hooks/useFetchQuery";
+import { Button } from "../components/Button";
+import { Map } from "./Map";
+import { Section } from "../components/Section";
 
 export const Maps = () => {
-  const [validace, setValidace] = useState("");
-  const [error, setError] = useState("");
-
-  const validateHandler = (value: string) => {
-    if (/^[a-zA-Z0-9áčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ ]+$/.test(value)) {
-      setError("");
-      return true;
-    } else {
-      setError(" * Napiště prosím název lokality");
-      return false;
-    }
-  };
-  function handlerOnChange(event: {
-    target: {
-      value: string;
+  const { data, isLoading, error } = useFetchQuery<PointType>("point");
+  const [location, setLocation] = useState<{
+    coordinates: {
+      lat: number | null;
+      lng: number | null;
     };
-  }) {
-    setValidace(event.target.value);
-    validateHandler(event.target.value);
+    name: string | null;
+    zoom: number | null;
+  }>({ coordinates: { lat: 50.0755, lng: 14.4378 }, name: "Praha", zoom: 10 });
+
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
-  return (
-    <Section title="Mapy" type="light">
-      <div>
-        <label className="block text-sm font-medium leading-6 text-center text-slate-600">
-          Vyberte lokaci
-        </label>
+  if (error) {
+    return <div> {error}</div>;
+  }
 
-        <div className="flex justify-center">
-          <div className="relative mt-2 rounded-md flex  ">
-            <div>
-              <input
-                type="text"
-                name="location"
-                id="location"
-                value={validace}
-                className="block w-full border-2 border-darkGreen  rounded-md py-1.5 pl-7 pr-20 text-slate-600 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo sm:text-sm sm:leading-6"
-                placeholder="Lokalita"
-                onChange={handlerOnChange}
-              />
-              {error && (
-                <div className="text-orange-900 text-xs mt-2">{error}</div>
-              )}
-            </div>
-            <div>
-              <select
-                id="area"
-                name="area"
-                className="rounded-md  border-2 border-darkGreen  w-24 h-10 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
-              >
-                <option>Praha-1</option>
-                <option>Praha-2</option>
-                <option>Praha-3</option>
-                <option>Praha-4</option>
-                <option>Praha-5</option>
-                <option>Praha-6</option>
-                <option>Praha-7</option>
-                <option>Praha-8</option>
-                <option>Praha-9</option>
-                <option>Praha-10</option>
-                <option>Praha-11</option>
-              </select>
-            </div>
-            <button className=" bg-darkGreen  rounded-xl border-2 text-white p-2  hover:border-2 hover:border-neutral-50   mr-4">
-              <Link to={ROUTES.list()}>potvrdit</Link>
-            </button>
-          </div>
-        </div>
+  if (!data || data.length === 0) {
+    return (
+      <div>
+        Momentálně zde není žádné místo k venčení. Pokud jste admin, prosím
+        nejdříve místo přidejte.
       </div>
-      <div className="flex justify-center">
-        <img className="max-w-3xl" src={maps} alt="Map" />
+    );
+  }
+
+  const handleClick = (point: PointType) => {
+    console.log(location);
+    console.log(point);
+    setLocation({
+      coordinates: {
+        lat: Number(point.map._lat),
+        lng: Number(point.map._long),
+      },
+      name: point.name,
+      zoom: 13,
+    });
+  };
+
+  return (
+    <Section title="Najdi si to na mapě" type="light">
+      <div className="flex flex-col items-center">
+        <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 justify-center">
+          {data.map((point) => (
+            <div className="p-2" key={point.id}>
+              <Button
+                onClick={() => {
+                  handleClick(point);
+                }}
+              >
+                {point.name}
+              </Button>
+            </div>
+          ))}
+        </div>
+        <div className="flex justify-center pb-20 pt-20">
+          <Map location={location} />
+        </div>
       </div>
     </Section>
   );

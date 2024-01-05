@@ -10,12 +10,11 @@ export const ListItem = ({ imagesrc, name, id, likes }: PointType) => {
 
   return (
     <ButtonLink link={ROUTES.point(id)} variant="tertiary">
-      <div className="text-center text-white m-16">
-        <div className="bg-darkGreen p-8 w-full rounded-lg">
-          <div className="text-lg mb-4 underline">{name}</div>
+      <div className="text-center text-white">
+        <div className="bg-darkGreen p-3 w-full rounded-lg">
+          <div className="text-lg mb-2 underline">{name}</div>
 
           <div className="w-52 h-52 mb-2">
-            {/* TODO: Upravit classy */}
             <img
               className="w-full h-52 object-cover rounded-lg"
               src={isImageLoading ? logoSrc : imageUrl}

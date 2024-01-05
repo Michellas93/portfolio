@@ -14,10 +14,10 @@ export const Section = ({ title, type, children }: Props) => {
 
   return (
     <div
-      className={cs("", {
+      className={cs("rounded-xl ", {
         "bg-whiteT": isLight,
         "bg-gradient-to-r from-darkGreen to-colorLightGreen": isGreen,
-        "bd-darkBrown": isDark,
+        "bg-darkBrown": isDark,
       })}
     >
       <Title title={title} />
