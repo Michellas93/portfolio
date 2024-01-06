@@ -1,7 +1,9 @@
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import { LocationMarker } from "../types";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../routes";
 
-const GOOGLE_MAPS_API_KEY = "AIzaSyDqsR-Bwo5PJnwk3Yfj4qy3jEt_hRpS5ac";
+const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAP_API_KEY;
 
 const centerLocation = {
   lat: 50.0755,
@@ -18,30 +20,34 @@ type MapProps = {
 };
 
 export const Map = ({ locationMarkers }: MapProps) => {
+  const navigate = useNavigate();
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
   });
 
-  console.log(locationMarkers[0]);
+  if (isLoaded && locationMarkers.length > 0) {
+    return (
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={centerLocation}
+        zoom={10}
+      >
+        {locationMarkers.map((locationMarker) => (
+          <Marker
+            key={locationMarker.id}
+            position={locationMarker.coordinates}
+            label={locationMarker.name}
+            title={locationMarker.name}
+            onClick={() => {
+              navigate(ROUTES.point(locationMarker.id));
+            }}
+          />
+        ))}
+      </GoogleMap>
+    );
+  }
 
-  return isLoaded ? (
-    <GoogleMap
-      mapContainerStyle={containerStyle}
-      center={centerLocation}
-      zoom={10}
-    >
-      <Marker position={centerLocation} />
-      {/* {locationMarkers.map((locationMarker, index) => (
-        <Marker
-          key={index}
-          position={locationMarker.coordinates}
-          label={locationMarker.name}
-          title={locationMarker.name}
-        />
-      ))} */}
-    </GoogleMap>
-  ) : (
-    <p>Nedošlo ke správnému načtení Google Maps.</p>
-  );
+  return <p>Nedošlo ke správnému načtení Google Maps.</p>;
 };

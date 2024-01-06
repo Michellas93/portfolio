@@ -34,6 +34,7 @@ export type DistrictType = {
 };
 
 export type LocationMarker = {
+  id: string;
   coordinates: {
     lat: number;
     lng: number;

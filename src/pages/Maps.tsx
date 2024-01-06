@@ -11,6 +11,7 @@ export const Maps = () => {
   useEffect(() => {
     if (data) {
       const transformedData = data.map((point) => ({
+        id: point.id,
         coordinates: {
           lat: Number(point.geolocation?.latitude),
           lng: Number(point.geolocation?.longitude),
