@@ -1,3 +1,5 @@
+import { GeoPoint } from "firebase/firestore";
+
 export type LocationType = {
   id: string;
   name: string;
@@ -23,11 +25,18 @@ export type PointType = {
   imagesrc: string;
   type: PointTypeOption;
   likes: string[];
-  map: number[];
-  district: string;
+  geolocation: GeoPoint;
 };
 
 export type DistrictType = {
   name: string;
   id: string;
+};
+
+export type LocationMarker = {
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
+  name: string;
 };
