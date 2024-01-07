@@ -14,7 +14,7 @@ const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAP_API_KEY;
 
 const containerStyle = {
   width: "1000px",
-  height: "400px",
+  height: "650px",
 };
 
 type MapProps = {

@@ -47,28 +47,20 @@ export const List = () => {
     <>
       <div className="flex flex-col items-center">
         <div className="relative w-40">
+          <label className="block text-sm font-medium mb-2 text-slate-600">
+            Typ Lokace:
+          </label>
           <select
             value={filter}
             onChange={handleFilterChange}
-            className="appearance-none peer p-4 pe-9 block w-full border border-white rounded-lg text-sm bg-darkBrown text-white
-              disabled:opacity-50 disabled:pointer-events-none
-              focus:pt-6 focus:pb-2 focus:border-blue-500 focus:ring-blue-500
-              [&:not(:placeholder-shown)]:pt-6 [&:not(:placeholder-shown)]:pb-2
-              autofill:pt-6 autofill:pb-2 hover:cursor-pointer"
+            className="appearance-none py-3 px-4 pe-9 block w-full border border-white cursor-pointer rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-darkBrown text-white"
           >
             <option value="all">Vše</option>
             <option value="les">Les</option>
             <option value="park">Park</option>
             <option value="louka">Louka</option>
           </select>
-          <label
-            className="absolute top-0 start-0 px-3 py-4 h-full truncate pointer-events-none transition ease-in-out duration-100 border border-transparent text-slate-600
-              peer-disabled:opacity-50 peer-disabled:pointer-events-none peer-focus:text-xs peer-focus:-translate-y-1.5 peer-focus:text-slate-600
-              peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:text-slate-600"
-          >
-            Typ Lokace:
-          </label>
-          <span className="absolute top-6 end-3 hover:cursor-pointer">
+          <span className="absolute top-12 end-3 hover:cursor-pointer">
             <DropdownIcon />
           </span>
         </div>

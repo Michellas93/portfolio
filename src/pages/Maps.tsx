@@ -25,7 +25,7 @@ export const Maps = () => {
 
   return (
     <Section title="Mapa" type="light">
-      <div className="flex justify-center pb-10">
+      <div className="flex justify-center pb-20">
         <Map data={data} />
       </div>
     </Section>
