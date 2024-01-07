@@ -4,7 +4,7 @@ const AboutSection = () => {
   return (
     <div className="flex items-center  bg-gradient-to-r from-darkGreen to-colorLightGreen shadow-md p-6">
       <Section title="O mně" type="green">
-        <div className="flex flex-col md:flex-row items-center bg-darkGreen to-colorLightGreen shadow-md p-6">
+        <div className="flex flex-col md:flex-row items-center bg-darkGreen to-colorLightGreen shadow-md p-6 rounded-xl">
           <p className="tpx-1 leading-7  text-white">
             Jsem milovnice psů a hrdá majitelka dvouleté Ary. Mé dny jsou plné
             radosti a dobrodružství díky dlouhým procházkám, které si s Ary

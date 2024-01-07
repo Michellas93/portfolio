@@ -16,6 +16,7 @@ type Props = {
   docId: string;
   docLikesArrayKey?: string;
   classNames?: string;
+  inactiveHeartColor?: string;
 };
 
 const getLikesText = (likesCount: number) => {
@@ -35,6 +36,7 @@ export const LikeButton = ({
   docId,
   docLikesArrayKey = "likes",
   classNames,
+  inactiveHeartColor,
 }: Props) => {
   const { user } = useAuth();
   const userUid = user?.uid;
@@ -70,7 +72,11 @@ export const LikeButton = ({
   return (
     <div className={cs(classNames, "flex items-center justify-between gap-1")}>
       <div className="h-6 w-6">
-        <Heart isActive={liked} onClick={handleLike} />
+        <Heart
+          isActive={liked}
+          onClick={handleLike}
+          inactiveColor={inactiveHeartColor}
+        />
       </div>
       <span>{getLikesText(likes?.length ?? 0)}</span>
     </div>

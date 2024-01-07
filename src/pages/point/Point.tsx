@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { PointType } from "../../types";
 import { ROUTES } from "../../routes";
 import { useGetImageUrl } from "../../hooks/useGetImageUrl";
@@ -9,6 +9,7 @@ import { useFetchDocument } from "../../hooks/useFetchDocument";
 
 export const Point = () => {
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
   const res = useFetchDocument<PointType>("point", id ?? "");
   const { data, isLoading, error } = res;
   const { imageUrl, isImageLoading } = useGetImageUrl(data?.imagesrc);
@@ -27,9 +28,16 @@ export const Point = () => {
 
   return (
     <div className="flex flex-col h-screen bg-gray-100">
-      <div className="flex flex-col h-screenflex items-center  bg-gradient-to-r from-darkGreen to-colorLightGreen shadow-md p-6 text-white">
+      <div className="flex flex-col h-screen items-center  bg-gradient-to-r from-darkGreen to-colorLightGreen shadow-md p-6 text-white">
         <div className="m-4 flex-row">
-          <ButtonLink link={ROUTES.list()} variant="secondary">
+          <ButtonLink
+            link={
+              searchParams.get("map")
+                ? `${ROUTES.maps()}?activeMarkerId=${id}`
+                : ROUTES.list()
+            }
+            variant="secondary"
+          >
             Zpět
           </ButtonLink>
         </div>

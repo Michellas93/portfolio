@@ -2,6 +2,7 @@ import { SetStateAction, useMemo, useState } from "react";
 import { FilterItemType, useFetchQuery } from "../../hooks/useFetchQuery";
 import { PointType } from "../../types";
 import { ListItem } from "./ListItem";
+import { DropdownIcon } from "../DropdownIcon";
 
 export const List = () => {
   const [filter, setFilter] = useState("all");
@@ -44,18 +45,34 @@ export const List = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center  ">
-        <select
-          value={filter}
-          onChange={handleFilterChange}
-          className="w-1/3 mt-1 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md bg-white shadow-md"
-        >
-          <option value="all">Vše</option>
-          <option value="les">Les</option>
-          <option value="park">Park</option>
-          <option value="louka">Louka</option>
-        </select>
-        <div className="flex flex-row flex-wrap m-2  justify-center ">
+      <div className="flex flex-col items-center">
+        <div className="relative w-40">
+          <select
+            value={filter}
+            onChange={handleFilterChange}
+            className="appearance-none peer p-4 pe-9 block w-full border border-white rounded-lg text-sm bg-darkBrown text-white
+              disabled:opacity-50 disabled:pointer-events-none
+              focus:pt-6 focus:pb-2 focus:border-blue-500 focus:ring-blue-500
+              [&:not(:placeholder-shown)]:pt-6 [&:not(:placeholder-shown)]:pb-2
+              autofill:pt-6 autofill:pb-2 hover:cursor-pointer"
+          >
+            <option value="all">Vše</option>
+            <option value="les">Les</option>
+            <option value="park">Park</option>
+            <option value="louka">Louka</option>
+          </select>
+          <label
+            className="absolute top-0 start-0 px-3 py-4 h-full truncate pointer-events-none transition ease-in-out duration-100 border border-transparent text-slate-600
+              peer-disabled:opacity-50 peer-disabled:pointer-events-none peer-focus:text-xs peer-focus:-translate-y-1.5 peer-focus:text-slate-600
+              peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:text-slate-600"
+          >
+            Typ Lokace:
+          </label>
+          <span className="absolute top-6 end-3 hover:cursor-pointer">
+            <DropdownIcon />
+          </span>
+        </div>
+        <div className="flex flex-row flex-wrap m-2 justify-center">
           {data.map((point) => (
             <div className="p-2" key={point.id}>
               <div className="transition-transform duration-300 hover:scale-110  ">

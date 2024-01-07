@@ -5,7 +5,6 @@ export const Root = () => {
   return (
     <div className="flex flex-col min-h-screen justify-between">
       <Navbar />
-
       <main className="flex-grow">
         <Outlet />
       </main>
