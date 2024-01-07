@@ -12,7 +12,6 @@ export default {
         colorLightGreen: "#a5a58d",
       },
     },
-    plugins: [require("@tailwindcss/line-clamp")],
   },
   plugins: [],
 };

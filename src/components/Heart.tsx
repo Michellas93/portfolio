@@ -3,8 +3,10 @@ import { MouseEvent } from "react";
 export const Heart = ({
   isActive,
   onClick,
+  inactiveColor = "white",
 }: {
   isActive: boolean;
+  inactiveColor?: string;
   onClick: (e: MouseEvent<any>) => void;
 }) => (
   <svg
@@ -15,7 +17,7 @@ export const Heart = ({
     style={{
       cursor: "pointer",
       fill: isActive ? "red" : "transparent",
-      stroke: isActive ? "red" : "white",
+      stroke: isActive ? "red" : inactiveColor,
       strokeWidth: "1px",
     }}
   >

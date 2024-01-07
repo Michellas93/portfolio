@@ -1,14 +1,16 @@
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-import { LocationMarker } from "../types";
-import { useNavigate } from "react-router-dom";
+import {
+  GoogleMap,
+  useJsApiLoader,
+  MarkerF,
+  InfoWindowF,
+} from "@react-google-maps/api";
+import { PointType } from "../types";
+import { useSearchParams } from "react-router-dom";
 import { ROUTES } from "../routes";
+import { LikeButton } from "./LikeButton";
+import { ButtonLink } from "./ButtonLink";
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAP_API_KEY;
-
-const centerLocation = {
-  lat: 50.0755,
-  lng: 14.4378,
-};
 
 const containerStyle = {
   width: "1000px",
@@ -16,38 +18,95 @@ const containerStyle = {
 };
 
 type MapProps = {
-  locationMarkers: LocationMarker[];
+  data: PointType[];
 };
 
-export const Map = ({ locationMarkers }: MapProps) => {
-  const navigate = useNavigate();
+const transformGeolocationToPosition = (
+  geolocation: PointType["geolocation"]
+) => ({
+  lat: geolocation.latitude,
+  lng: geolocation.longitude,
+});
+
+export const Map = ({ data }: MapProps) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeMarkerId = searchParams.get("activeMarkerId");
+
+  const handleActiveMarker = (id: string) => {
+    if (id === activeMarkerId) {
+      return;
+    }
+    setSearchParams({ activeMarkerId: id });
+  };
+
+  const handleOnLoad = (map: google.maps.Map) => {
+    const bounds = new google.maps.LatLngBounds();
+    data.forEach(({ geolocation }) =>
+      bounds.extend(transformGeolocationToPosition(geolocation))
+    );
+    map.fitBounds(bounds);
+  };
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
   });
 
-  if (isLoaded && locationMarkers.length > 0) {
-    return (
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={centerLocation}
-        zoom={10}
-      >
-        {locationMarkers.map((locationMarker) => (
-          <Marker
-            key={locationMarker.id}
-            position={locationMarker.coordinates}
-            label={locationMarker.name}
-            title={locationMarker.name}
-            onClick={() => {
-              navigate(ROUTES.point(locationMarker.id));
-            }}
-          />
-        ))}
-      </GoogleMap>
-    );
+  if (!isLoaded) {
+    return <p>Načítání...</p>;
+  }
+  if (!data) {
+    return <p>Chyba při načítání dat.</p>;
   }
 
-  return <p>Nedošlo ke správnému načtení Google Maps.</p>;
+  return (
+    <GoogleMap
+      onLoad={handleOnLoad}
+      mapContainerStyle={containerStyle}
+      onClick={() => setSearchParams()}
+    >
+      {data.map(({ id, geolocation, name, description, likes }) => {
+        const position = transformGeolocationToPosition(geolocation);
+        return (
+          <MarkerF
+            key={id}
+            position={position}
+            onClick={() => {
+              handleActiveMarker(id);
+            }}
+          >
+            {activeMarkerId === id ? (
+              <InfoWindowF
+                onCloseClick={() => setSearchParams()}
+                position={position}
+              >
+                <div className="max-w-sm rounded overflow-hidden shadow-lg p-4 bg-white">
+                  <div className="flex justify-center gap-3 items-center mb-2">
+                    <h3 className="font-bold text-xl">{name}</h3>
+
+                    <LikeButton
+                      likes={likes}
+                      docId={id}
+                      collectionName="point"
+                      inactiveHeartColor="black"
+                    />
+                  </div>
+                  <p className="text-gray-700 text-sm line-clamp-3">
+                    {description}
+                  </p>
+                  <ButtonLink
+                    link={ROUTES.point(`${id}?map=true`)}
+                    variant="secondary"
+                    className="mt-2"
+                  >
+                    Více
+                  </ButtonLink>
+                </div>
+              </InfoWindowF>
+            ) : null}
+          </MarkerF>
+        );
+      })}
+    </GoogleMap>
+  );
 };

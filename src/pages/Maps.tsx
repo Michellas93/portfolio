@@ -1,27 +1,10 @@
-import { LocationMarker, PointType } from "../types";
-import { useEffect, useState } from "react";
+import { PointType } from "../types";
 import { useFetchQuery } from "../hooks/useFetchQuery";
 import { Map } from "../components/Map";
 import { Section } from "../components/Section";
 
 export const Maps = () => {
   const { data, isLoading, error } = useFetchQuery<PointType>("point");
-  const [locationMarkers, setLocationMarkers] = useState<LocationMarker[]>([]);
-
-  useEffect(() => {
-    if (data) {
-      const transformedData = data.map((point) => ({
-        id: point.id,
-        coordinates: {
-          lat: Number(point.geolocation?.latitude),
-          lng: Number(point.geolocation?.longitude),
-        },
-        name: point.name,
-      }));
-
-      setLocationMarkers(transformedData);
-    }
-  }, [data]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -43,7 +26,7 @@ export const Maps = () => {
   return (
     <Section title="Mapa" type="light">
       <div className="flex justify-center pb-10">
-        <Map locationMarkers={locationMarkers} />
+        <Map data={data} />
       </div>
     </Section>
   );
