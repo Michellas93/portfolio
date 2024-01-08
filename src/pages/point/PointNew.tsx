@@ -2,7 +2,7 @@ import { v4 as uuid } from "uuid";
 import { toast } from "react-toastify";
 import { PointNewForm } from "../../components/Point/PointNewForm";
 import { useFetchQuery } from "../../hooks/useFetchQuery";
-import { DistrictType, PointType } from "../../types";
+import { DistrictType } from "../../types";
 import { db } from "../../firebase/config";
 import { PointNewFormSchemaType } from "../../components/Point/PointNewFormSchema";
 import { GeoPoint, addDoc, collection } from "firebase/firestore";
