@@ -56,6 +56,18 @@ export const PointNewForm = ({
             register={register("district")}
           />
         )}
+        <Field
+          label="Latitude"
+          error={errors?.latitude}
+          placeholder="Latitude"
+          register={register("latitude")}
+        />
+        <Field
+          label="Longitude"
+          error={errors?.longitude}
+          placeholder="Longituted"
+          register={register("longitude")}
+        />
         <Select
           label="typ"
           error={errors?.type}
