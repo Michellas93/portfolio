@@ -20,7 +20,7 @@ export const Button = ({
       {...rest}
       className={cs(
         className,
-        "pt-1 pb-1 rounded-xl m-1 sm:mb-0 sm:mr-2 w-auto px-4 py-2 mb-2 disabled:bg-gray-400 disabled:hover:bg-gray-400",
+        "rounded-xl w-auto px-4 py-1 disabled:bg-gray-400 disabled:hover:bg-gray-400",
         {
           "bg-darkGreen hover:bg-darkBrown border-2": isPrimary,
           "bg-darkBrown hover:bg-darkGreen border-2": isSecondary,

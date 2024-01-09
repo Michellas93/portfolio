@@ -23,7 +23,7 @@ export const LogInForm = () => {
   });
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center min-h-screen">
       <form
         onSubmit={handleSubmit((formData) => loginWithEmailPassword(formData))}
         className="flex flex-col items-center p-4 w-96 border-2 border-darkGreen bg-whiteT"

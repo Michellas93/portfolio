@@ -3,9 +3,9 @@ import { Navbar } from "../components/navbar/Navbar";
 
 export const Root = () => {
   return (
-    <div className="flex flex-col min-h-screen justify-between">
+    <div>
       <Navbar />
-      <main className="flex-grow">
+      <main>
         <Outlet />
       </main>
       <footer className="text-center bg-darkGreen sticky">

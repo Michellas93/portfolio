@@ -40,13 +40,17 @@ export const Navbar = () => {
   return (
     <TailwindNavbar
       className={cs(
-        "sticky top-0 z-10 h-max max-w-full border-none rounded-none px-0 pt-2 pb-0 lg:py-4 bg-darkGreen m-auto",
+        "sticky top-0 z-10 h-max max-w-full border-none rounded-none px-0 py-2 lg:py-4 bg-darkGreen m-auto",
         { "pb-2": openNav }
       )}
     >
       <div>
         <div className="flex items-center justify-between px-4">
-          <NavLink to={ROUTES.index()} onClick={handleClose}>
+          <NavLink
+            to={ROUTES.index()}
+            onClick={handleClose}
+            className="cursor-pointer"
+          >
             <Logo />
           </NavLink>
           <div className="flex">
@@ -60,7 +64,7 @@ export const Navbar = () => {
             </div>
             <IconButton
               variant="text"
-              className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+              className="ml-auto -mt-6 mr-3 h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
               ripple={false}
               onClick={() => setOpenNav((prevOpen) => !prevOpen)}
             >

@@ -27,9 +27,9 @@ export const Point = () => {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-gray-100">
-      <div className="flex flex-col h-screen items-center  bg-gradient-to-r from-darkGreen to-colorLightGreen shadow-md p-6 text-white">
-        <div className="m-4 flex-row">
+    <div className="flex flex-col">
+      <div className="flex flex-col items-center min-h-screen bg-gradient-to-r from-darkGreen to-colorLightGreen shadow-md p-6 text-white">
+        <div className="flex justify-between w-full mb-4">
           <ButtonLink
             link={
               searchParams.get("map")
@@ -40,29 +40,29 @@ export const Point = () => {
           >
             Zpět
           </ButtonLink>
+          <h1 className="text-4xl font-bold text-left">{data.name}</h1>
+          <LikeButton
+            likes={data.likes}
+            collectionName="point"
+            docId={id}
+            classNames="ml-6 font-bold"
+          />
         </div>
 
-        <div className="flex flex-col items-center justify-between">
-          <h1 className="text-2xl font-bold mb-4 text-left">{data.name}</h1>
+        <div className="flex flex-col items-center justify-start rounded-3xl">
           {isImageLoading ? (
             <Spinner />
           ) : (
             <img
-              className="w-full h-fullmd:w-96 md:h-96 object-contain p-4"
+              className=" h-auto w-1/2 object-contain rounded-2xl"
               src={imageUrl}
               alt={`Preview of ${data.name}`}
             />
           )}
 
-          <div className="flex flex-col items-center justify-start pt-14">
-            <LikeButton
-              likes={data.likes}
-              collectionName="point"
-              docId={id}
-              classNames="ml-6"
-            />
-            <div className="flex flex-col md:flex-row items-center bg-darkGreen to-colorLightGreen shadow-md p-6 mt-6  rounded-lg">
-              <p className="mt-4 text-center md:text-left p-4">
+          <div className="flex flex-col items-center justify-start  w-1/2">
+            <div className="bg-darkGreen to-colorLightGreen shadow-md p-8 rounded-lg mb-8 text-xl  ">
+              <p className="mt-4 text-center md:text-left leading-8">
                 {data.description}
               </p>
             </div>

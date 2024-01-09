@@ -24,7 +24,7 @@ const MapSection = () => {
             alt="Map section"
           />
         </div>
-        <div className="flex justify-center pb-5  ">
+        <div className="flex justify-center pb-5  text-white ">
           <ButtonLink link={ROUTES.maps()} variant="secondary">
             Více
           </ButtonLink>

@@ -7,8 +7,8 @@ import { arrayRemove, arrayUnion, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { Heart } from "./Heart";
 
-const LOGIN_ERROR_MSG = "To perform like action, you need to be logged in.";
-const LIKE_ACTION_ERROR_MSG = "Unable to perform like action.";
+const LOGIN_ERROR_MSG = "Pokud chcete provést akci, musíte být přihlášeni.";
+const LIKE_ACTION_ERROR_MSG = "Nelze dát LIKE, jsi přihlášen?";
 
 type Props = {
   likes: string[];
