@@ -9,6 +9,7 @@ import { useSearchParams } from "react-router-dom";
 import { ROUTES } from "../routes";
 import { LikeButton } from "./LikeButton";
 import { ButtonLink } from "./ButtonLink";
+import { useEffect, useState } from "react";
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAP_API_KEY;
 
@@ -38,14 +39,25 @@ export const Map = ({ data }: MapProps) => {
     }
     setSearchParams({ activeMarkerId: id });
   };
+  const [map, setMap] = useState<google.maps.Map | null>(null);
 
-  const handleOnLoad = (map: google.maps.Map) => {
-    const bounds = new google.maps.LatLngBounds();
-    data.forEach(({ geolocation }) =>
-      bounds.extend(transformGeolocationToPosition(geolocation))
-    );
-    map.fitBounds(bounds);
+  const handleOnLoad = (currentMap: google.maps.Map) => {
+    // const bounds = new google.maps.LatLngBounds();
+    // data.forEach(({ geolocation }) =>
+    //   bounds.extend(transformGeolocationToPosition(geolocation))
+    // );
+    // map.fitBounds(bounds);
+    setMap(currentMap);
   };
+  useEffect(() => {
+    if (map) {
+      const bounds = new google.maps.LatLngBounds();
+      data.forEach(({ geolocation }) =>
+        bounds.extend(transformGeolocationToPosition(geolocation))
+      );
+      map.fitBounds(bounds);
+    }
+  }, [map, data]);
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -61,6 +73,7 @@ export const Map = ({ data }: MapProps) => {
 
   return (
     <GoogleMap
+      onUnmount={() => setMap(null)}
       onLoad={handleOnLoad}
       mapContainerStyle={containerStyle}
       onClick={() => setSearchParams()}
