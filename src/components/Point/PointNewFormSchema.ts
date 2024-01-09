@@ -9,6 +9,8 @@ export const PointNewFormSchema = z.object({
   }),
 
   district: z.string(),
+  latitude: z.string().min(-90).max(90),
+  longitude: z.string().min(-180).max(180),
 });
 
 export type PointNewFormSchemaType = z.infer<typeof PointNewFormSchema>;

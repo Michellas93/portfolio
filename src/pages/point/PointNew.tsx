@@ -5,7 +5,7 @@ import { useFetchQuery } from "../../hooks/useFetchQuery";
 import { DistrictType } from "../../types";
 import { db } from "../../firebase/config";
 import { PointNewFormSchemaType } from "../../components/Point/PointNewFormSchema";
-import { addDoc, collection } from "firebase/firestore";
+import { GeoPoint, addDoc, collection } from "firebase/firestore";
 import { uploadImage } from "../../firebase/utils";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../routes";
@@ -34,13 +34,18 @@ export const PointNew = () => {
     const imagesrc = await uploadImage(file, `pointPictures/${uuid()}`);
 
     if (!imagesrc) {
-      return toast.error("Nepodařilo se nahrát obrázek");
+      return toast.error("Obrázek se nepodařilo nahrát");
     }
+
     const newPoint = {
       imagesrc,
       name: formData.name,
       district: formData.district,
       description: formData.description,
+      geolocation: new GeoPoint(
+        Number(formData.latitude),
+        Number(formData.longitude)
+      ),
     };
 
     try {
