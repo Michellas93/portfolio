@@ -9,7 +9,7 @@ type Props = Omit<ButtonProps, "onClick"> & {
 export const ButtonLink = ({ link, onClickCallback, ...props }: Props) => {
   const navigate = useNavigate();
   return (
-    <div className="flex space-x-3">
+    <div className="space-x-3">
       <Button
         {...props}
         onClick={() => {

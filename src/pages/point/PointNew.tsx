@@ -61,8 +61,8 @@ export const PointNew = () => {
   };
 
   return (
-    <div className="  bg-gradient-to-r from-darkGreen to-colorLightGreen  ">
-      <h1 className="text-center text-5xl text-white pt-10">Přidat point</h1>
+    <div className="bg-gradient-to-r min-h-screen from-darkGreen to-colorLightGreen  ">
+      <h1 className="text-center text-5xl text-white py-10">Přidat point</h1>
       <PointNewForm
         districtOptions={districtOptions}
         onSubmit={submitForm}

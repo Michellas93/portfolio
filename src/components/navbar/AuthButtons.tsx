@@ -20,7 +20,7 @@ export const AuthButtons = ({
           }}
           variant="secondary"
         >
-          Logout
+          Odhlásit
         </Button>
       </div>
     );
@@ -32,14 +32,14 @@ export const AuthButtons = ({
         onClickCallback={onClick}
         variant="primary"
       >
-        Log in
+        Přihlásit
       </ButtonLink>
       <ButtonLink
         link={ROUTES.signup()}
         onClickCallback={onClick}
         variant="secondary"
       >
-        Sign up
+        Zaregistrovat
       </ButtonLink>
     </div>
   );

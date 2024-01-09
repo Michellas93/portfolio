@@ -31,7 +31,7 @@ export const Header = ({ header, headerParagraph }: Props) => {
         )}
       </div>
       <img
-        className="w-1/3 pl-6 mt-4 mb-4 transition-transform duration-300 hover:scale-110"
+        className="w-1/5 pl-6 mt-4 mb-4 transition-transform duration-300 hover:scale-110"
         src={pohyb}
         alt="Pohyb"
       />
