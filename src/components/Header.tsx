@@ -22,10 +22,10 @@ export const Header = ({ header, headerParagraph }: Props) => {
         {!user && (
           <div className="flex mt-4 space-x-3 justify-center text-white">
             <ButtonLink link={ROUTES.login()} variant="primary">
-              Log in
+              Přihlásit
             </ButtonLink>
             <ButtonLink link={ROUTES.signup()} variant="secondary">
-              Sign up
+              Zaregistrovat
             </ButtonLink>
           </div>
         )}

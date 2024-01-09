@@ -2,13 +2,12 @@ import { PointType } from "../types";
 import { useFetchQuery } from "../hooks/useFetchQuery";
 import { Map } from "../components/Map";
 import { Section } from "../components/Section";
+import { useListFilter } from "../hooks/useListFilter";
 
 export const Maps = () => {
-  const { data, isLoading, error } = useFetchQuery<PointType>("point");
+  const [filter, FilterComponent] = useListFilter();
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  const { data, isLoading, error } = useFetchQuery<PointType>("point", filter);
 
   if (error) {
     return <div> {error}</div>;
@@ -25,6 +24,9 @@ export const Maps = () => {
 
   return (
     <Section title="Mapa" type="light">
+      <div className="mx-auto mb-4 relative w-40 flex flex-row justify-center items-center">
+        <FilterComponent isLoading={isLoading} />
+      </div>
       <div className="flex justify-center pb-20">
         <Map data={data} />
       </div>
