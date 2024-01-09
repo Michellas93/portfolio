@@ -40,7 +40,9 @@ export const Point = () => {
           >
             Zpět
           </ButtonLink>
-          <h1 className="text-4xl font-bold text-left">{data.name}</h1>
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-left">
+            {data.name}
+          </h1>
           <LikeButton
             likes={data.likes}
             collectionName="point"
@@ -49,20 +51,20 @@ export const Point = () => {
           />
         </div>
 
-        <div className="flex flex-col items-center justify-start rounded-3xl">
+        <div className="relative flex flex-col items-center justify-start rounded-3xl">
           {isImageLoading ? (
             <Spinner />
           ) : (
             <img
-              className=" h-auto w-1/2 object-contain rounded-2xl"
+              className="h-auto w-full md:w-3/4 lg:w-1/2 object-contain rounded-t-2xl mb-5"
               src={imageUrl}
               alt={`Preview of ${data.name}`}
             />
           )}
 
-          <div className="flex flex-col items-center justify-start  w-1/2">
-            <div className="bg-darkGreen to-colorLightGreen shadow-md p-8 rounded-lg mb-8 text-xl  ">
-              <p className="mt-4 text-center md:text-left leading-8">
+          <div className="w-full md:w-3/4 lg:w-2/3 flex flex-col items-center justify-start">
+            <div className="bg-darkGreen to-colorLightGreen shadow-md p-8 rounded-lg mb-8 text-xl border-2 border-white">
+              <p className="text-center md:text-left leading-8">
                 {data.description}
               </p>
             </div>

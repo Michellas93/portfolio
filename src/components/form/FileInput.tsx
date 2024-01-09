@@ -31,7 +31,7 @@ const FileInput = ({ control, name, rules, error }: FileInputProps) => {
             }}
             onBlur={onBlur}
             ref={ref}
-            className="input w-full p-3 rounded mb-1 border border-darkGreen"
+            className="input w-full p-3 rounded mb-1 border-2 border-gray-500"
           />
           {error && (
             <span className="text-red-500 text-xs">{error.message}</span>

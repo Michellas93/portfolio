@@ -13,11 +13,6 @@ import { useEffect, useState } from "react";
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAP_API_KEY;
 
-const containerStyle = {
-  width: "1000px",
-  height: "650px",
-};
-
 type MapProps = {
   data: PointType[];
 };
@@ -30,8 +25,18 @@ const transformGeolocationToPosition = (
 });
 
 export const Map = ({ data }: MapProps) => {
+  const [size, setSize] = useState([0, 0]);
   const [searchParams, setSearchParams] = useSearchParams();
   const activeMarkerId = searchParams.get("activeMarkerId");
+
+  useEffect(() => {
+    setSize([window.innerWidth, window.innerHeight]);
+  });
+
+  const containerStyle = {
+    width: size[0] * 0.8,
+    height: size[1] * 0.65,
+  };
 
   const handleActiveMarker = (id: string) => {
     if (id === activeMarkerId) {
@@ -42,11 +47,6 @@ export const Map = ({ data }: MapProps) => {
   const [map, setMap] = useState<google.maps.Map | null>(null);
 
   const handleOnLoad = (currentMap: google.maps.Map) => {
-    // const bounds = new google.maps.LatLngBounds();
-    // data.forEach(({ geolocation }) =>
-    //   bounds.extend(transformGeolocationToPosition(geolocation))
-    // );
-    // map.fitBounds(bounds);
     setMap(currentMap);
   };
   useEffect(() => {

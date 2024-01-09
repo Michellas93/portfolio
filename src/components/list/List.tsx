@@ -2,8 +2,6 @@ import { useFetchQuery } from "../../hooks/useFetchQuery";
 import { PointType } from "../../types";
 import { ListItem } from "./ListItem";
 import { useListFilter } from "../../hooks/useListFilter";
-import { DropdownIcon } from "../DropdownIcon";
-import { Spinner } from "@material-tailwind/react";
 
 export const List = () => {
   const [filter, FilterComponent] = useListFilter();
@@ -30,17 +28,13 @@ export const List = () => {
   return (
     <>
       <div className="flex flex-col items-center">
-        <div className="relative w-40">
-          <span className="absolute top-12 right-14 end-3 hover:cursor-pointer">
-            <DropdownIcon />
-            {isLoading && <Spinner />}
-          </span>
+        <div className="mx-auto mb-4 relative w-40 flex flex-row justify-center items-center">
+          <FilterComponent isLoading={isLoading} />
         </div>
-        <FilterComponent />
         <div className="flex flex-row flex-wrap m-2 justify-center">
           {data.map((point) => (
             <div className="p-2" key={point.id}>
-              <div className="transition-transform duration-300 hover:scale-110  ">
+              <div className="transition-transform duration-300 hover:scale-110 group">
                 <ListItem {...point} key={point.id} />
               </div>
             </div>

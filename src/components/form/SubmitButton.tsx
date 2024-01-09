@@ -8,15 +8,17 @@ export const SubmitButton = ({ isLoading }: { isLoading: boolean }) => {
       disabled={isLoading}
       type="submit"
       className={cs(
-        "w-full text-white p-2 hover:border-2 border-neutral-50 rounded-3xl",
+        "w-full text-white hover:border-2 mt-2 border-neutral-50 rounded-3xl",
         {
           "bg-darkGreen": !isLoading,
           "bg-grey": isLoading,
         }
       )}
     >
-      <span>Submit </span>
-      {isLoading && <Spinner />}
+      <div className="flex flex-row justify-center items-center relative">
+        <span>Submit</span>
+        <span className="absolute end-0">{isLoading && <Spinner />}</span>
+      </div>
     </Button>
   );
 };

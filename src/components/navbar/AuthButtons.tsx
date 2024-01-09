@@ -12,7 +12,7 @@ export const AuthButtons = ({
 }) => {
   if (isUser)
     return (
-      <div className="flex justify-end">
+      <div className="flex justify-end space-x-3">
         <Button
           onClick={() => {
             logOut();
@@ -26,7 +26,7 @@ export const AuthButtons = ({
     );
 
   return (
-    <div className="flex justify-end">
+    <div className="flex justify-end space-x-3">
       <ButtonLink
         link={ROUTES.login()}
         onClickCallback={onClick}

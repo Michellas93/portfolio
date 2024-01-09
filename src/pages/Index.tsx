@@ -7,7 +7,7 @@ export const Index = () => {
     <div>
       <Header
         header="Pet Heart"
-        headerParagraph="Hledáte ideální místo pro venčení vašeho čtyřnohého přítele v srdci Prahy? Představujeme vám Pet Heart – vašeho nového průvodce světem psích radovánek."
+        headerParagraph="Vítejte v aplikaci Pet Heart - nezbytném společníkovi každého milovníka psů, který hledá dokonalá místa pro venčení svého čtyřnohého přítele. S naší aplikací objevíte ty nejlepší parky, louky a stezky ve vašem okolí, které jsou jako stvořené pro hraní, běhání a nezapomenutelné chvíle se vaším psem."
       />
       <MapSection />
 

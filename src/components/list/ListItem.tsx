@@ -12,7 +12,7 @@ export const ListItem = ({ imagesrc, name, id, likes }: PointType) => {
     <ButtonLink link={ROUTES.point(id)} variant="tertiary">
       <div className="text-center text-white">
         <div className="bg-darkGreen p-3 w-full rounded-lg">
-          <div className="text-lg mb-2 underline">{name}</div>
+          <div className="text-lg mb-2 group-hover:underline">{name}</div>
 
           <div className="w-52 h-52 mb-2">
             <img

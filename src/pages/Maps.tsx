@@ -9,6 +9,10 @@ export const Maps = () => {
 
   const { data, isLoading, error } = useFetchQuery<PointType>("point", filter);
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   if (error) {
     return <div> {error}</div>;
   }
@@ -23,13 +27,15 @@ export const Maps = () => {
   }
 
   return (
-    <Section title="Mapa" type="light">
-      <div className="mx-auto mb-4 relative w-40 flex flex-row justify-center items-center">
-        <FilterComponent isLoading={isLoading} />
-      </div>
-      <div className="flex justify-center pb-20">
-        <Map data={data} />
-      </div>
-    </Section>
+    <div className="min-h-screen bg-whiteT">
+      <Section title="Mapa" type="light">
+        <div className="mx-auto mb-4 relative w-40 flex flex-row justify-center items-center">
+          <FilterComponent isLoading={isLoading} />
+        </div>
+        <div className="flex justify-center pb-20">
+          <Map data={data} />
+        </div>
+      </Section>
+    </div>
   );
 };

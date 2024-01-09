@@ -13,7 +13,7 @@ export const Header = ({ header, headerParagraph }: Props) => {
   return (
     <div className="flex flex-col md:flex-row items-center bg-gradient-to-r from-darkGreen to-colorLightGreen shadow-md p-6 md:p-8">
       <div className="text-center md:flex-1 ">
-        <h1 className="text-2xl md:text-4xl font-bold text-white leading-tight ">
+        <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight ">
           {header}
         </h1>
         <p className="text-base md:text-lg text-white mt-2 md:mt-4">
