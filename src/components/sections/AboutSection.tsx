@@ -15,7 +15,7 @@ const AboutSection = () => {
             zkušenosti a tipy na nejlepší místa pro naše čtyřnohé přátele.
           </p>
         </div>
-        <h2 className="text-center text-5xl mt-6">Kontakt</h2>
+        <h2 className="text-center text-4xl md:text-5xl mt-6">Kontakt</h2>
         <div className="flex flex-col items-center text-center p-6">
           <p className="text-center flex items-center justify-between text-white">
             Michaela Šimkova
