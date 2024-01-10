@@ -12,11 +12,11 @@ export const Header = ({ header, headerParagraph }: Props) => {
   const { user } = useAuth();
   return (
     <div className="flex flex-col md:flex-row items-center bg-gradient-to-r from-darkGreen to-colorLightGreen shadow-md p-6 md:p-8">
-      <div className="text-center md:flex-1 ">
+      <div className="text-center md:flex-1">
         <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight ">
           {header}
         </h1>
-        <p className="text-base md:text-lg text-white mt-2 md:mt-4">
+        <p className="text-base md:text-lg text-white mt-2 md:mt-4 sm:w-3/4 mx-auto">
           {headerParagraph}
         </p>
         {!user && (
@@ -31,7 +31,7 @@ export const Header = ({ header, headerParagraph }: Props) => {
         )}
       </div>
       <img
-        className="w-1/5 pl-6 mt-4 mb-4 transition-transform duration-300 hover:scale-110"
+        className="w-1/2 mt-8 sm:w-1/3 md:w-1/4 lg:w-1/5 md:pr-6 md:mt-4 md:mb-4 transition-transform duration-300 hover:scale-110"
         src={pohyb}
         alt="Pohyb"
       />
