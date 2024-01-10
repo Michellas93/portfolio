@@ -30,24 +30,26 @@ export const Point = () => {
     <div className="flex flex-col">
       <div className="flex flex-col items-center min-h-screen bg-gradient-to-r from-darkGreen to-colorLightGreen shadow-md p-6 text-white">
         <div className="flex justify-between w-full mb-4">
-          <ButtonLink
-            link={
-              searchParams.get("map")
-                ? `${ROUTES.maps()}?activeMarkerId=${id}`
-                : ROUTES.list()
-            }
-            variant="secondary"
-          >
-            Zpět
-          </ButtonLink>
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-left">
+          <div className="w-1/4">
+            <ButtonLink
+              link={
+                searchParams.get("map")
+                  ? `${ROUTES.maps()}?activeMarkerId=${id}`
+                  : ROUTES.list()
+              }
+              variant="secondary"
+            >
+              Zpět
+            </ButtonLink>
+          </div>
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center w-1/2">
             {data.name}
           </h1>
           <LikeButton
             likes={data.likes}
             collectionName="point"
             docId={id}
-            classNames="ml-6 font-bold"
+            classNames="font-bold w-1/4"
           />
         </div>
 
@@ -63,7 +65,7 @@ export const Point = () => {
           )}
 
           <div className="w-full md:w-3/4 lg:w-2/3 flex flex-col items-center justify-start">
-            <div className="bg-darkGreen to-colorLightGreen shadow-md p-8 rounded-lg mb-8 text-xl border-2 border-white">
+            <div className="bg-darkGreen to-colorLightGreen shadow-md p-2 sm:p-4 lg:p-8 rounded-lg mb-8 text-sm sm:text-base lg:text-xl border-2 border-white">
               <p className="text-center md:text-left leading-8">
                 {data.description}
               </p>

@@ -44,6 +44,7 @@ export const PointNewForm = ({
         />
         <TextAreaField
           label="Popis lokality"
+          placeholder="Popis lokality"
           error={errors?.description}
           register={register("description")}
         />

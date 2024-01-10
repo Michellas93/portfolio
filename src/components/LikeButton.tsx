@@ -70,7 +70,12 @@ export const LikeButton = ({
   };
 
   return (
-    <div className={cs(classNames, "flex items-center justify-between gap-1")}>
+    <div
+      className={cs(
+        classNames,
+        "flex items-center sm:justify-end flex-wrap sm:flex-row justify-center gap-1"
+      )}
+    >
       <div className="h-6 w-6">
         <Heart
           isActive={liked}
